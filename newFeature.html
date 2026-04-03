@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Craft Portfolio</title>
+    <style>
+        :root {
+            --win-bg: #ffffff;
+            --win-sidebar: #f9f9f9;
+            --win-border: #e5e5e5;
+            --accent: #0078d4;
+            --text: #1a1a1a;
+            --lanyard-hex: #2d2d2d;
+        }
+
+        body { background: #f4f1ea; color: var(--text); font-family: "Segoe UI Variable", "Segoe UI", sans-serif; margin: 0; overflow-x: hidden; }
+
+        /* --- HERO SECTION: PREMIUM LANYARD & BOARDING PASS --- */
+        .hero { 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 60px; 
+            padding: 0 5%;
+            perspective: 1500px;
+        }
+        
+        .lanyard-system { perspective: 1200px; animation: swing 6s ease-in-out infinite; transform-origin: top center; }
+        
+        /* Realistic Woven Strap */
+        .strap { 
+            width: 32px; height: 130px; 
+            background: var(--lanyard-hex); 
+            margin: 0 auto; 
+            position: relative;
+            box-shadow: inset -2px 0 5px rgba(0,0,0,0.3), 2px 0 5px rgba(0,0,0,0.2);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .strap::after {
+            content: 'VISITOR • 2026 • STAFF';
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            color: rgba(255,255,255,0.2);
+            font-size: 10px; font-weight: 700; letter-spacing: 2px;
+        }
+        .clip {
+            width: 36px; height: 18px; background: linear-gradient(90deg, #777, #bbb, #777);
+            margin: -2px auto 0; border-radius: 2px; position: relative; z-index: 2;
+        }
+
+        .id-card { 
+            width: 140px; height: 195px; background: white; 
+            border-radius: 10px; border: 1px solid #ddd;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            display: flex; flex-direction: column; align-items: center; padding: 15px;
+            margin-top: -2px;
+        }
+        .id-card img { width: 75px; height: 75px; border-radius: 50%; background: #f0f0f0; margin-bottom: 12px; border: 3px solid #f4f1ea; }
+        
+        /* Boarding Pass Ticket */
+        .ticket {
+            width: 420px; height: 190px; background: #fff;
+            border-radius: 12px; display: flex; position: relative;
+            box-shadow: 0 0px 10px rgba(0,0,0,0.1);
+            transition: 0.4s ease; cursor: pointer; border: 1px solid #eee;
+        }
+        .ticket:hover { transform: translateY(-10px) rotateY(-5deg); }
+        .ticket::before, .ticket::after {
+            content: ''; position: absolute; left: 290px;
+            width: 24px; height: 24px; background: #f4f1ea; border-radius: 50%; z-index: 5;
+        }
+        .ticket::before { top: -12px; }
+        .ticket::after { bottom: -12px; }
+
+        .ticket-main { flex: 2.5; padding: 20px; border-right: 1.5px dashed #eee; }
+        .ticket-stub { flex: 1; padding: 20px; background: #fafafa; display: flex; flex-direction: column; justify-content: space-between; align-items: center;}
+        
+        .t-label { font-size: 8px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
+        .t-val { font-size: 13px; font-weight: 700; color: #333; }
+        .barcode { height: 40px; width: 100%; background: repeating-linear-gradient(90deg, #333 0, #333 2px, transparent 2px, transparent 4px); opacity: 0.7; }
+
+        @keyframes swing { 0%, 100% { transform: rotateZ(-3deg) rotateX(2deg); } 50% { transform: rotateZ(3deg) rotateX(4deg); } }
+
+        /* --- WINDOWS 11 EXPLORER SECTION (Kept Exactly Same) --- */
+        .explorer-container { height: 90vh; display: flex; justify-content: center; align-items: flex-start; padding: 50px 0; }
+        
+        .explorer-window {
+            width: 92%; height: 650px; max-width: 1100px;
+            background: var(--win-bg); border: 1px solid var(--win-border);
+            border-radius: 12px; display: flex; flex-direction: column;
+            position: relative; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+        }
+
+        .win-toolbar { height: 50px; border-bottom: 1px solid var(--win-border); display: flex; align-items: center; padding: 0 20px; gap: 20px; font-size: 13px; background: #fff; }
+
+        .win-body { display: flex; flex: 1; position: relative; overflow: hidden; }
+
+        .win-sidebar { width: 210px; background: var(--win-sidebar); border-right: 1px solid var(--win-border); padding: 15px; }
+        .nav-item { padding: 10px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; margin-bottom: 4px; transition: 0.2s; }
+        .nav-item:hover { background: rgba(0,0,0,0.04); }
+        .nav-item.active { background: rgba(0,120,212,0.08); color: var(--accent); font-weight: 600; }
+
+        .win-content { flex: 1; padding: 25px; display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 30px; align-content: start; overflow-y: auto; }
+        
+        .folder { text-align: center; cursor: pointer; padding: 12px; border-radius: 8px; transition: 0.2s; border: 1px solid transparent; }
+        .folder:hover { background: rgba(0,120,212,0.05); border: 1px solid rgba(0,120,212,0.1); }
+        .folder.active-folder { background: rgba(0,120,212,0.1); border: 1px solid rgba(0,120,212,0.2); }
+        
+        .folder-ico { width: 50px; height: 40px; background: #ffd666; margin: 0 auto 10px; border-radius: 2px 8px 2px 2px; position: relative; }
+        .folder-ico::before { content: ''; position: absolute; top: -6px; left: 0; width: 20px; height: 6px; background: inherit; border-radius: 2px 2px 0 0; }
+
+        .win-drawer {
+            position: absolute; top: 0; right: -350px; 
+            width: 320px; height: 100%; 
+            background: #ffffff; border-left: 1px solid var(--win-border);
+            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 20; padding: 30px; box-sizing: border-box;
+            box-shadow: -10px 0 20px rgba(0,0,0,0.02);
+        }
+        .win-drawer.open { right: 0; }
+        .close-x { cursor: pointer; float: right; font-size: 22px; color: #bbb; line-height: 1; }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Premium Lanyard -->
+        <div class="lanyard-system">
+            <div class="strap"></div>
+            <div class="clip"></div>
+            <div class="id-card">
+                <img src="https://dicebear.com" alt="User">
+                <span style="font-size: 11px; font-weight: 700;">ADMIN_USER</span>
+                <small style="color: #999; margin-top: 5px; font-size: 9px;">CREATIVE STAFF</small>
+            </div>
+        </div>
+
+        <!-- Detailed Boarding Pass -->
+        <div class="ticket">
+            <div class="ticket-main">
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+                    <span style="font-weight:800; color:var(--accent); font-size:12px;">PORTFOLIO AIRWAYS</span>
+                    <span class="t-val" style="font-size:9px; opacity:0.6;">BOARDING PASS</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:20px; margin-bottom:15px;">
+                    <div><div class="t-label">From</div><div style="font-size:22px; font-weight:900;">IDE</div></div>
+                    <div style="flex:1; border-top:1.5px dotted #ccc; position:relative;"><span style="position:absolute; top:-10px; left:45%;">✈</span></div>
+                    <div><div class="t-label">To</div><div style="font-size:22px; font-weight:900;">WEB</div></div>
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                    <div><div class="t-label">Passenger</div><div class="t-val">Piyush</div></div>
+                    <div><div class="t-label">Seat</div><div class="t-val">12A (WINDOW)</div></div>
+                </div>
+            </div>
+            <div class="ticket-stub">
+                <div style="text-align:center;">
+                    <div class="t-label">Gate</div>
+                    <div class="t-val" style="font-size:18px;">G2</div>
+                </div>
+                <div class="barcode"></div>
+                <div style="font-size:7px; color:#ccc; letter-spacing:1px;">9920110420</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explorer Section -->
+    <section class="explorer-container">
+        <div class="explorer-window">
+            <div class="win-toolbar">
+                <span style="color:var(--accent); font-weight: 600;">+ New</span>
+                <span>View</span>
+                <span>Sort</span>
+            </div>
+            <div class="win-body">
+                <nav class="win-sidebar">
+                    <div class="nav-item active" onclick="changeCategory('projects', this)">🏠 Projects</div>
+                    <div class="nav-item" onclick="changeCategory('achievements', this)">🏆 Achievements</div>
+                    <div class="nav-item" onclick="changeCategory('snapshots', this)">📸 Snapshots</div>
+                </nav>
+                <div class="win-content" id="folderGrid"></div>
+                <div class="win-drawer" id="drawer">
+                    <span class="close-x" onclick="closeDrawer()">&times;</span>
+                    <h3 id="dTitle" style="margin-top:0; font-size: 18px;">Project Name</h3>
+                    <p id="dDesc" style="font-size: 14px; color:#666; line-height: 1.6; margin-top: 20px;"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const data = {
+            projects: [
+                { id: 'p1', name: "Craft AI", desc: "Building generative UI systems.", color: "#7dc2ff" },
+                { id: 'p2', name: "Visuals", desc: "High-fidelity motion studies.", color: "#7dc2ff" }
+            ],
+            achievements: [
+                { id: 'a1', name: "SOTD 2026", desc: "Piyush Agarwal.", color: "#ffc107" }
+            ],
+            snapshots: [
+                { id: 's1', name: "Tokyo_23", desc: "Photography from Shibuya.", color: "#95e1d3" }
+            ]
+        };
+
+        let currentActiveFolderId = null;
+
+        function changeCategory(key, el) {
+            closeDrawer();
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            el.classList.add('active');
+            
+            const grid = document.getElementById('folderGrid');
+            grid.innerHTML = '';
+            data[key].forEach(item => {
+                const f = document.createElement('div');
+                f.className = 'folder';
+                f.id = `folder-${item.id}`;
+                f.innerHTML = `<div class="folder-ico" style="background:${item.color}"></div><span style="font-size:12px;">${item.name}</span>`;
+                f.onclick = (e) => {
+                    e.stopPropagation();
+                    handleFolderClick(item);
+                };
+                grid.appendChild(f);
+            });
+        }
+
+        function handleFolderClick(item) {
+            if (currentActiveFolderId === item.id) {
+                closeDrawer();
+            } else {
+                currentActiveFolderId = item.id;
+                document.getElementById('dTitle').innerText = item.name;
+                document.getElementById('dDesc').innerText = item.desc;
+                document.querySelectorAll('.folder').forEach(f => f.classList.remove('active-folder'));
+                document.getElementById(`folder-${item.id}`).classList.add('active-folder');
+                document.getElementById('drawer').classList.add('open');
+            }
+        }
+
+        function closeDrawer() {
+            document.getElementById('drawer').classList.remove('open');
+            document.querySelectorAll('.folder').forEach(f => f.classList.remove('active-folder'));
+            currentActiveFolderId = null;
+        }
+
+        changeCategory('projects', document.querySelector('.nav-item.active'));
+    </script>
+</body>
+</html>
