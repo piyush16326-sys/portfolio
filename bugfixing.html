@@ -235,131 +235,125 @@ section {
 
 }
 
-/* --- Pendulum Animation --- */
-@keyframes pendulum {
-  0%, 100% { transform: rotateZ(-5deg); }
-  50% { transform: rotateZ(5deg); }
+        .lanyard-system { 
+            perspective: 1200px; 
+            animation: swing 6s ease-in-out infinite; 
+            transform-origin: top center; 
+            position: relative; /* Add this if not already behaving */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: -50px;
+        }
+        
+        /* Realistic Woven Strap */
+        /* Realistic Woven Strap */
+.strap { 
+    width: 32px; 
+    height: 130px; 
+    /* Fallback to Blue if --lanyard-hex is missing */
+    background-color: var(--lanyard-hex, #242121c7); 
+    /* This creates the woven "fabric" texture */
+    background-image: 
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px),
+        linear-gradient(90deg, rgba(0,0,0,0.2) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.2) 100%);
+    margin: 0 auto; 
+    position: relative;
+    box-shadow: 
+        inset 0 0 10px rgba(0,0,0,0.3), /* Internal shadow for depth */
+        2px 5px 15px rgba(0,0,0,0.2);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 2px;
 }
 
-.hero-assets-container {
-  position: absolute;
-  inset: 0;
-  pointer-events: none; /* Allows clicking text through empty space */
-  z-index: 50;
-}
-
-.asset-left, .asset-top-right { pointer-events: auto; }
-
-/* Desktop Positions */
-.asset-left { position: absolute; top: 0; left: 100px; }
-.asset-top-right { position: absolute; top: 100px; right: 100px; }
-
-.lanyard-system {
-  transform-origin: top center;
-  animation: pendulum 4s ease-in-out infinite;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-
-/* --- Premium Textile Lanyard --- */
-.strap {
-  width: 30px; height: 180px;
-  /* Simulating a woven fabric texture */
-  background: 
-    repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 2px),
-    #1a1a1a; 
-  position: relative;
-  box-shadow: 
-    inset -3px 0 8px rgba(0,0,0,0.5), 
-    3px 0 10px rgba(0,0,0,0.2);
-  display: flex;
-  justify-content: center;
-  border-radius: 4px 4px 0 0;
-}
-
-/* Vertical Text Branding */
+/* Vertical Text on Strap */
 .strap::after {
-  content: 'PIYUSH • CREATIVE • STAFF';
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  color: rgba(255, 255, 255, 0.25); /* Muted premium silver look */
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-top: 20px;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    content: 'VISITOR • 2026 • STAFF';
+    /* Force vertical text */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: rgba(255, 255, 255, 0.5); /* Semi-transparent white looks like a print */
+    font-size: 9px; 
+    font-weight: 900; 
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
-/* Realistic Metal Attachment Hook */
-.clip {
-  width: 36px; height: 20px;
-  background: linear-gradient(90deg, #555, #eee 50%, #555);
-  margin-top: -4px;
-  border-radius: 4px;
-  z-index: 2;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+        .clip {
+            width: 36px; height: 12px; background: linear-gradient(90deg, #777, #bbb, #777);
+            margin: -2px auto 0; border-radius: 2px; position: relative; z-index: 2;
+        }
+
+        .id-card {
+    box-shadow: 
+        0 30px 60px -12px rgba(0,0,0,0.15), 
+        0 18px 36px -18px rgba(0,0,0,0.2);
+        border-radius: 10px;
 }
 
-.id-card { 
-  width: 125px; height: 170px; background: white; border: 1px solid #ddd; border-radius: 10px;
-  box-shadow: 0 10px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; padding: 12px;
+
+        .id-card img { width: 75px; height: 75px; border-radius: 50%; background: #f0f0f0; margin-bottom: 12px; border: 3px solid #f4f1ea; }
+        
+        /* Boarding Pass Ticket */
+        .ticket {
+            width: 350px; height: 150px; background: #fff;
+            border-radius: 12px; display: flex; position: relative;
+            box-shadow: 0 0px 10px rgba(0,0,0,0.1);
+            transition: 0.4s ease; cursor: pointer; border: 1px solid #eee;
+            margin-left: auto;
+            margin-right: -30px;
+            top: 350px;
+        }
+        .ticket:hover { transform: translateY(-10px) rotateY(-5deg); }
+        .ticket::before, .ticket::after {
+            content: ''; position: absolute; left: 290px;
+            width: 24px; height: 24px; background: #f4f1ea; border-radius: 50%; z-index: 5;
+        }
+        .ticket::before { top: -12px; }
+        .ticket::after { bottom: -12px; }
+
+        .ticket-main { flex: 2.5; padding: 20px; border-right: 1.5px dashed #eee; }
+        .ticket-stub { flex: 1; padding: 20px; background: #fafafa; display: flex; flex-direction: column; justify-content: space-between; align-items: center;}
+        
+        .t-label { font-size: 8px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
+        .t-val { font-size: 13px; font-weight: 700; color: #333; }
+        .barcode { height: 40px; width: 100%; background: repeating-linear-gradient(90deg, #333 0, #333 2px, transparent 2px, transparent 4px); opacity: 0.7; }
+
+        @keyframes swing { 0%, 100% { transform: rotateZ(-3deg) rotateX(2deg); } 50% { transform: rotateZ(3deg) rotateX(4deg); } }
+
+@media screen and (max-width: 720px) {
+    /* Adjust Ticket */
+    .ticket {
+        width: 280px;      /* Smaller but readable */
+        height: 150px;
+        margin-right: 0;   /* Remove negative margin pushing it out */
+        top: 430px;         /* Move it up so it doesn't overlap text too much */
+        right: 70px;      /* Slight nudge to the right is okay, but keep it in view */
+    }
+
+    /* Adjust Ticket Dots (the holes in the ticket) */
+    .ticket::before, .ticket::after {
+        left: 190px;       /* Reposition the circle cutouts to match new width */
+    }
+
+    /* Adjust Lanyard */
+    .lanyard-system {
+        margin-left: -30px; /* Shift left slightly to make room for center text */
+        transform: scale(0.8); /* Scale down the whole lanyard system */
+        top: -20px;
+    }
+
+    /* Hide barcode on mobile to save space if needed */
+    .barcode {
+        display: none;
+    }
 }
-.id-card img { width: 65px; height: 65px; border-radius: 50%; background: #f0f0f0; margin-bottom: 8px; border: 2px solid #fff; }
-
-/* Ticket: Fixed Sizing & Text Scaling */
-/* --- Floating Boarding Pass Movement --- */
-@keyframes float {
-  0% { transform: translateY(0) rotateY(-5deg) rotateX(2deg); }
-  50% { transform: translateY(-15px) rotateY(2deg) rotateX(-2deg); }
-  100% { transform: translateY(0) rotateY(-5deg) rotateX(2deg); }
-}
-
-.ticket {
-  width: 320px; height: 145px;
-  background: #fff; border-radius: 10px; display: flex; position: relative;
-  transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  cursor: pointer;
-  /*filter: drop-shadow(0 0px 10px rgba(0,0,0,0.1));*/
-  
-  /* Apply the floating movement */
-  animation: float 5s ease-in-out infinite;
-  transform-style: preserve-3d;
-}
-
-.ticket:hover {
-  animation-play-state: paused; /* Stop floating when interacting */
-  transform: scale(1.1) rotateY(0deg) translateY(-20px) !important;
-  filter: drop-shadow(0 30px 50px rgba(0,0,0,0.15));
-  z-index: 100;
-}
-
-.ticket::before, .ticket::after {
-  content: ''; position: absolute; left: 70%; width: 20px; height: 20px; 
-  background: #f4f1ea; border-radius: 50%; z-index: 5;
-}
-.ticket::before { top: -10px; }
-.ticket::after { bottom: -10px; }
-
-.ticket-main { flex: 2.2; padding: 15px; border-right: 1px dashed #eee; text-align: left; }
-.ticket-stub { flex: 1; padding: 15px; background: #fafafa; display: flex; flex-direction: column; justify-content: space-between; align-items: center; border-radius: 0 10px 10px 0; }
-.t-label { font-size: 7px; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; }
-.t-val { font-weight: 700; color: #333; }
-.barcode { height: 30px; width: 100%; background: repeating-linear-gradient(90deg, #333 0, #333 2px, transparent 2px, transparent 4px); opacity: 0.6; }
-
-/* Mobile Logic: Vertical Stack & Reduced Size */
-@media (max-width: 768px) {
-  .hero-assets-container {
-    position: relative; inset: auto; display: flex; flex-direction: column; align-items: center; gap: 30px; padding-top: 20px;
-  }
-  .asset-left, .asset-top-right { position: relative; top: auto; left: auto; right: auto; transform: scale(0.9); }
-  .strap { height: 100px; }
-  .hero-content-wrapper { padding-top: 40px; }
-}
-
 
 </style>
 </head>
@@ -412,64 +406,113 @@ section {
 
 </nav>
 
-<section class="hero text-center" id="home">
-  <div class="hero-bg"></div>
+<!-- HERO -->
+<section class="hero relative h-screen overflow-hidden flex items-center justify-center">
 
-  <!-- Assets Container: Absolute on Desktop, Flex on Mobile -->
-  <div class="hero-assets-container">
-    <!-- Lanyard & ID Card -->
-    <div class="asset-left">
-      <div class="lanyard-system">
-        <div class="strap"></div>
-        <div class="clip"></div>
-        <div class="id-card">
-          <img src="https://dicebear.com" alt="Piyush">
-          <span class="id-name">PIYUSH.ZIP</span>
-          <small class="id-title">AI CONTENT CREATOR</small>
-        </div>
-      </div>
-    </div>
+  <!-- Background -->
+  <div class="hero-bg absolute inset-0"></div>
 
-    <!-- Boarding Pass -->
-    <div class="asset-top-right">
-      <div class="ticket">
-        <div class="ticket-main">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-black text-pink-600 text-[9px] leading-tight">AI CREATIVE PASS</span>
-            <span class="text-[8px] opacity-60 font-bold">BOARDING</span>
-          </div>
-          <div class="flex items-center gap-2 mb-3">
-            <div><div class="t-label">From</div><div class="text-lg font-black leading-none">AI_CORE</div></div>
-            <div class="flex-1 border-t border-dotted border-gray-400 relative"><span class="absolute -top-2.5 left-1/2 text-[10px]">✨</span></div>
-            <div><div class="t-label">To</div><div class="text-lg font-black leading-none">REEL_LAB</div></div>
-          </div>
-          <div class="grid grid-cols-2 gap-1 text-left">
-            <div><div class="t-label">Creator</div><div class="t-val text-[10px]">PIYUSH</div></div>
-            <div><div class="t-label">Access</div><div class="t-val text-[10px]">UNLIMITED</div></div>
-          </div>
-        </div>
-        <div class="ticket-stub">
-          <div class="text-center">
-            <div class="t-label">Prompt</div>
-            <div class="t-val text-sm">v6.0</div>
-          </div>
-          <div class="barcode"></div>
-        </div>
-      </div>
+  <!-- LEFT + RIGHT -->
+<div class="absolute inset-0 flex justify-between items-start px-10 md:px-20 pt-20 pointer-events-none">
+    
+    <!-- LEFT: LANYARD -->
+    <div class="lanyard-system pointer-events-auto">
+      <div class="strap"></div>
+      <div class="clip"></div>
+      <div class="id-card flex flex-col items-center bg-white border border-gray-100 shadow-2xl relative overflow-hidden">
+  
+  <!-- Subtle Top Accent Bar -->
+  <div class="absolute top-0 left-0 w-full h-1 bg-black opacity-80"></div>
+
+  <!-- Profile Section -->
+  <div class="mt-8 mb-4">
+    <div class="w-24 h-24 rounded-full border-4 border-gray-50 overflow-hidden shadow-sm">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbxFASmvJnnYxbrhksQ-CgblQ2vd8eIZ66VA&s" 
+           class="w-full h-full object-cover transition-all duration-500" alt="User">
     </div>
   </div>
 
-  <!-- Main Content -->
-  <div class="hero-content-wrapper mt-10 md:mt-0">
-    <h1 class="text-4xl md:text-5xl font-black mb-4 reveal">
+  
+  <div class="text-center px-4">
+    <h2 class="text-lg font-black tracking-tighter text-black uppercase leading-tight">Piyush<br>Agarwal</h2>
+    <div class="h-[2px] w-8 bg-black mx-auto my-3"></div>
+    <p class="text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase">Lead Developer</p>
+  </div>
+
+  <!-- Bottom Glassmorphism Bar -->
+  <div class="mt-auto w-full bg-gray-50/80 backdrop-blur-sm py-3 px-4 flex justify-between items-center border-t border-gray-100">
+    <span class="text-[8px] font-black opacity-30 tracking-widest">STF-2026</span>
+    <div class="flex gap-1">
+      <div class="w-1 h-3 bg-black opacity-10"></div>
+      <div class="w-1 h-3 bg-black opacity-30"></div>
+      <div class="w-1 h-3 bg-black opacity-60"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <!-- RIGHT: TICKET -->
+    <div class="ticket pointer-events-auto">
+      <div class="ticket-main">
+        <div class="flex justify-between mb-2 mt-[-10px]">
+          <span class="font-extrabold text-[10px] text-[var(--accent)]">PORTFOLIO AIRWAYS</span>
+          <span class="t-val text-[9px] opacity-60">BOARDING PASS</span>
+        </div>
+
+        <div class="flex items-center gap-5 mb-3">
+          <div>
+            <div class="t-label">From</div>
+            <div class="text-[18px] font-black">IDE</div>
+          </div>
+
+          <div class="flex-1 border-t border-dotted border-gray-400 relative">
+            <span class="absolute -top-2 left-1/2 -translate-x-1/2">✈</span>
+          </div>
+
+          <div>
+            <div class="t-label">To</div>
+            <div class="text-[18px] font-black">WEB</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 mt-[-5px]">
+          <div>
+            <div class="t-label">Passenger</div>
+            <div class="t-val">Piyush</div>
+          </div>
+          <div>
+            <div class="t-label">Seat</div>
+            <div class="t-val text-[12px]">12A <br/>(WINDOW)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-stub">
+        <div class="text-center">
+          <div class="t-label">Gate</div>
+          <div class="t-val text-[18px]">G2</div>
+        </div>
+        <div class="barcode"></div>
+        <div class="text-[7px] text-gray-300 tracking-widest">9920110420</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CENTER TEXT -->
+  <div class="text-center z-10 px-6">
+    <h1 class="text-4xl md:text-7xl font-black mb-6">
       Hi, I'm <span class="gradient">Piyush</span><br>
       I Create AI-Powered<br>Social Media Content
     </h1>
-    <p class="max-w-md mx-auto text-sm text-gray-600 reveal">
+
+    <p class="max-w-xl text-gray-600 mx-auto">
       Learning and building with AI tools to create product visuals,
       reels, and content ideas for modern brands.
     </p>
   </div>
+
 </section>
 
 
@@ -478,70 +521,13 @@ section {
     <div id="book" style="
         width:260px;
         height:360px;
-        background:url('data:image/jpeg;base64,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') center/cover;
+        background:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbxFASmvJnnYxbrhksQ-CgblQ2vd8eIZ66VA&s');
+        background-repeat: no-repeat;
+        background-size: cover;
         border-radius:12px;
         box-shadow:0 40px 80px rgba(0,0,0,0.3);
         transform:rotateY(20deg) rotateX(10deg);
-        transition:1s<section class="hero text-center" id="home">
-  <div class="hero-bg"></div>
-
-  <!-- Assets Container: Absolute on Desktop, Flex on Mobile -->
-  <div class="hero-assets-container">
-    <!-- Lanyard & ID Card -->
-    <div class="asset-left">
-      <div class="lanyard-system">
-        <div class="strap"></div>
-        <div class="clip"></div>
-        <div class="id-card">
-          <img src="https://dicebear.com" alt="Piyush">
-          <span class="id-name">PIYUSH.ZIP</span>
-          <small class="id-title">AI CONTENT CREATOR</small>
-        </div>
-      </div>
-    </div>
-
-    <!-- Boarding Pass -->
-    <div class="asset-top-right">
-      <div class="ticket">
-        <div class="ticket-main">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-black text-pink-600 text-[9px] leading-tight">AI CREATIVE PASS</span>
-            <span class="text-[8px] opacity-60 font-bold">BOARDING</span>
-          </div>
-          <div class="flex items-center gap-2 mb-3">
-            <div><div class="t-label">From</div><div class="text-lg font-black leading-none">AI_CORE</div></div>
-            <div class="flex-1 border-t border-dotted border-gray-400 relative"><span class="absolute -top-2.5 left-1/2 text-[10px]">✨</span></div>
-            <div><div class="t-label">To</div><div class="text-lg font-black leading-none">REEL_LAB</div></div>
-          </div>
-          <div class="grid grid-cols-2 gap-1 text-left">
-            <div><div class="t-label">Creator</div><div class="t-val text-[10px]">PIYUSH</div></div>
-            <div><div class="t-label">Access</div><div class="t-val text-[10px]">UNLIMITED</div></div>
-          </div>
-        </div>
-        <div class="ticket-stub">
-          <div class="text-center">
-            <div class="t-label">Prompt</div>
-            <div class="t-val text-sm">v6.0</div>
-          </div>
-          <div class="barcode"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="hero-content-wrapper mt-10 md:mt-0">
-    <h1 class="text-4xl md:text-5xl font-black mb-4 reveal">
-      Hi, I'm <span class="gradient">Piyush</span><br>
-      I Create AI-Powered<br>Social Media Content
-    </h1>
-    <p class="max-w-md mx-auto text-sm text-gray-600 reveal">
-      Learning and building with AI tools to create product visuals,
-      reels, and content ideas for modern brands.
-    </p>
-  </div>
-</section>
-;
+        transition:1s;
     "></div>
 </section>
 
