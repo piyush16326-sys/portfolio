@@ -4,10 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AI Content Specialist</title>
+<title>Piyush Agarwal | Fullstack Developer</title>
+<meta name="description" content="Explore the portfolio of Piyush Agarwal, a Full-Stack Web Developer specializing in React, Python, and SEO-friendly web applications. View my latest projects here.">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Piyush Agarwal",
+      "jobTitle": "Full-Stack Web Developer",
+      "url": "https://piyush16326-sys.github.io/portfolio/",
+      "sameAs": [
+        "https://github.com/piyush16326-sys",
+      ]
+    }
+    </script>
 
 <script>
 tailwind.config = {
@@ -22,340 +36,7 @@ tailwind.config = {
     }
 }
 </script>
-
-<style>
-
-/* ================= GLOBAL ================= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden; /* prevent horizontal scroll */
-}
-
-body {
-  font-family: sans-serif;
-  position: relative;
-  z-index: 1;
-  margin: 0;
-}
-
-/* ================= BACKGROUND ================= */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-  background-repeat: repeat;
-  opacity: 0.2;
-  z-index: -1;
-}
-
-/* ================= GRADIENT TEXT ================= */
-.gradient {
-  background: linear-gradient(90deg,#8b5cf6,#ec4899,#f97316);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ================= HERO ================= */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-
-.hero-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(circle at 30% 30%, #8b5cf6, transparent 60%),
-    radial-gradient(circle at 70% 70%, #ec4899, transparent 60%),
-    radial-gradient(circle at 50% 50%, #f97316, transparent 60%);
-  opacity: 0.25;
-  z-index: -1;
-}
-
-/* ================= SCROLL REVEAL ================= */
-.reveal {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 1s cubic-bezier(0.22,1,0.36,1);
-}
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ================= MASONRY ================= */
-.masonry {
-  column-count: 3;
-  column-gap: 16px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-@media(max-width:1024px) {
-  .masonry { column-count: 2; column-gap: 12px; }
-}
-@media(max-width:768px) {
-  .masonry { column-count: 1; column-gap: 0; }
-}
-
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 16px;
-  width: 100%;
-}
-
-/* ================= CARD ================= */
-.card {
-  transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
-}
-.card:hover {
-  transform: translateY(-8px) scale(1.03);
-}
-
-/* ================= IMAGES & VIDEOS ================= */
-.zoom-img {
-  transition: transform 0.8s ease;
-  border-radius: 12px;
-  max-width: 100%;
-  display: block;
-}
-.zoom-img:hover {
-  transform: scale(1.1);
-}
-
-/* ================= FILTER BAR ================= */
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap; /* wrap buttons on mobile */
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 30px;
-  padding: 0 10px;
-}
-
-.filter-bar .filter {
-  flex: 1 1 auto;
-  min-width: 70px;
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-/* ================= DOCK ================= */
-.dock {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 20px;
-  padding: 12px 22px;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(20px);
-  border-radius: 30px;
-  max-width: 95%;
-}
-.dock i {
-  font-size: 20px;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.dock i:hover {
-  transform: translateY(-10px) scale(1.4);
-  color: #ec4899;
-}
-
-/* ================= NAV LINK ANIMATION ================= */
-.nav-link {
-  position: relative;
-  transition: 0.3s;
-}
-.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0%;
-  height: 1px;
-  background: black;
-  transition: 0.3s;
-}
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* ================= SECTIONS ================= */
-section {
-  scroll-margin-top: 100px;
-}
-
-/* ================= NAVBAR SCROLL EFFECT ================= */
-.nav-scrolled#navbar {
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-/* ================= MOBILE LINKS ================= */
-.mobile-link {
-  transition: 0.3s;
-}
-.mobile-link:hover {
-  opacity: 0.6;
-}
-
-/* ================= HIDE NAV ================= */
-.nav-hidden {
-  transform: translateY(-120%);
-  transition: transform 0.4s ease;
-}
-
-/* ================= MOBILE NAV LINKS FIX ================= */
-@media (max-width: 768px) {
-  .nav-links {
-    display: block !important;      /* switch from flex to block */
-  }
-  
-  .nav-links .nav-link,
-  .nav-links .mobile-link {
-    display: block !important;      /* stack links vertically */
-    margin-bottom: 12px;            /* spacing between links */
-  }
-
-}
-
-        .lanyard-system { 
-            perspective: 1200px; 
-            animation: swing 6s ease-in-out infinite; 
-            transform-origin: top center; 
-            position: relative; /* Add this if not already behaving */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            top: -50px;
-        }
-        
-        /* Realistic Woven Strap */
-        /* Realistic Woven Strap */
-.strap { 
-    width: 32px; 
-    height: 130px; 
-    /* Fallback to Blue if --lanyard-hex is missing */
-    background-color: var(--lanyard-hex, #242121c7); 
-    /* This creates the woven "fabric" texture */
-    background-image: 
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px),
-        linear-gradient(90deg, rgba(0,0,0,0.2) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.2) 100%);
-    margin: 0 auto; 
-    position: relative;
-    box-shadow: 
-        inset 0 0 10px rgba(0,0,0,0.3), /* Internal shadow for depth */
-        2px 5px 15px rgba(0,0,0,0.2);
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 2px;
-}
-
-/* Vertical Text on Strap */
-.strap::after {
-    content: 'VISITOR • 2026 • STAFF';
-    /* Force vertical text */
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    color: rgba(255, 255, 255, 0.5); /* Semi-transparent white looks like a print */
-    font-size: 9px; 
-    font-weight: 900; 
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-
-        .clip {
-            width: 36px; height: 12px; background: linear-gradient(90deg, #777, #bbb, #777);
-            margin: -2px auto 0; border-radius: 2px; position: relative; z-index: 2;
-        }
-
-        .id-card {
-    box-shadow: 
-        0 30px 60px -12px rgba(0,0,0,0.15), 
-        0 18px 36px -18px rgba(0,0,0,0.2);
-        border-radius: 10px;
-}
-
-
-        .id-card img { width: 75px; height: 75px; border-radius: 50%; background: #f0f0f0; margin-bottom: 12px; border: 3px solid #f4f1ea; }
-        
-        /* Boarding Pass Ticket */
-        .ticket {
-            width: 350px; height: 150px; background: #fff;
-            border-radius: 12px; display: flex; position: relative;
-            box-shadow: 0 0px 10px rgba(0,0,0,0.1);
-            transition: 0.4s ease; cursor: pointer; border: 1px solid #eee;
-            margin-left: auto;
-            margin-right: -30px;
-            top: 350px;
-        }
-        .ticket:hover { transform: translateY(-10px) rotateY(-5deg); }
-        .ticket::before, .ticket::after {
-            content: ''; position: absolute; left: 290px;
-            width: 24px; height: 24px; background: #f4f1ea; border-radius: 50%; z-index: 5;
-        }
-        .ticket::before { top: -12px; }
-        .ticket::after { bottom: -12px; }
-
-        .ticket-main { flex: 2.5; padding: 20px; border-right: 1.5px dashed #eee; }
-        .ticket-stub { flex: 1; padding: 20px; background: #fafafa; display: flex; flex-direction: column; justify-content: space-between; align-items: center;}
-        
-        .t-label { font-size: 8px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
-        .t-val { font-size: 13px; font-weight: 700; color: #333; }
-        .barcode { height: 40px; width: 100%; background: repeating-linear-gradient(90deg, #333 0, #333 2px, transparent 2px, transparent 4px); opacity: 0.7; }
-
-        @keyframes swing { 0%, 100% { transform: rotateZ(-3deg) rotateX(2deg); } 50% { transform: rotateZ(3deg) rotateX(4deg); } }
-
-@media screen and (max-width: 720px) {
-    /* Adjust Ticket */
-    .ticket {
-        width: 280px;      /* Smaller but readable */
-        height: 150px;
-        margin-right: 0;   /* Remove negative margin pushing it out */
-        top: 430px;         /* Move it up so it doesn't overlap text too much */
-        right: 70px;      /* Slight nudge to the right is okay, but keep it in view */
-    }
-
-    /* Adjust Ticket Dots (the holes in the ticket) */
-    .ticket::before, .ticket::after {
-        left: 190px;       /* Reposition the circle cutouts to match new width */
-    }
-
-    /* Adjust Lanyard */
-    .lanyard-system {
-        margin-left: -30px; /* Shift left slightly to make room for center text */
-        transform: scale(0.8); /* Scale down the whole lanyard system */
-        top: -20px;
-    }
-
-    /* Hide barcode on mobile to save space if needed */
-    .barcode {
-        display: none;
-    }
-}
-
-</style>
+<link rel="stylesheet" href="test.css">
 </head>
 
 <body class="bg-white text-gray-800">
@@ -504,12 +185,12 @@ section {
   <div class="text-center z-10 px-6">
     <h1 class="text-4xl md:text-7xl font-black mb-6">
       Hi, I'm <span class="gradient">Piyush</span><br>
-      I Create AI-Powered<br>Social Media Content
     </h1>
 
+    <h2 class="text-[26px] font-bold">Full-Stack Web Developer <br> Specialising in Scalable React Applications</h2>
+
     <p class="max-w-xl text-gray-600 mx-auto">
-      Learning and building with AI tools to create product visuals,
-      reels, and content ideas for modern brands.
+      Helping startups and agencies build high-performance, SEO-optimized digital products from the ground up
     </p>
   </div>
 
@@ -535,14 +216,54 @@ section {
 <section class="py-20 px-6 text-center max-w-3xl mx-auto reveal" id="about">
     <h2 class="text-3xl font-bold mb-6">About Me</h2>
     <p class="text-gray-600">
-        I am an AI-powered Social Media Content Creator specializing in product visuals,
-        viral reels, and high-conversion content strategies. I combine AI tools,
-        creative thinking, and trend research to produce content that drives engagement,
-        growth, and brand identity.
+        I am a Full-Stack Web Developer who bridges the gap between classic web stability and modern AI innovation. Whether I’m building a high-performance React.js frontend, architecting a PHP & MySQL database, or integrating machine learning models with Python and Flask, I focus on creating scalable, user-centric digital products.
     </p>
 </section>
 
-<!-- SOCIAL POSTS -->
+<!-- Windows 11 -->
+<section class="explorer-container reveal" id="projects">
+    <div class="explorer-window">
+        <!-- Toolbar -->
+        <div class="win-toolbar flex items-center border-b border-gray-200 px-5 py-3 gap-5 text-sm bg-white/50">
+            <span class="text-purple-600 font-semibold cursor-pointer hover:opacity-70 transition">+ New</span>
+            <span class="cursor-pointer hover:text-purple-600 transition">View</span>
+            <span class="cursor-pointer hover:text-purple-600 transition">Sort</span>
+        </div>
+
+        <div class="win-body flex flex-1 overflow-hidden">
+            <!-- Sidebar -->
+            <nav class="win-sidebar w-48 sm:w-52 border-r border-gray-200 p-4 bg-gray-50/30">
+              <div class="nav-item active mb-1 p-2 rounded-lg cursor-pointer text-sm transition-colors hover:bg-black/5 flex" onclick="changeCategory('quick_access', this)">
+                <img src="images/qa.png" width="20px"> <span class="ml-[3px] pt-[2px] text-[12px]"> Quick access </span>
+              </div>
+                <div class="nav-item active mb-1 p-2 rounded-lg cursor-pointer text-sm transition-colors hover:bg-black/5" onclick="changeCategory('projects', this)">
+                    <span>🏠 Projects</span>
+                </div>
+                <div class="nav-item mb-1 p-2 rounded-lg cursor-pointer text-sm transition-colors hover:bg-black/5" onclick="changeCategory('achievements', this)">
+                    <span>🏆 Achievements</span>
+                </div>
+                <div class="nav-item mb-1 p-2 rounded-lg cursor-pointer text-sm transition-colors hover:bg-black/5" onclick="changeCategory('snapshots', this)">
+                    <span>📸 Snapshots</span>
+                </div>
+            </nav>
+
+            <!-- Main Content Grid -->
+            <div class="win-content flex-1 p-6 grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-8 overflow-y-auto" id="folderGrid">
+                <!-- Folders injected via JS -->
+            </div>
+
+            <!-- Detail Drawer -->
+            <div class="win-drawer absolute top-0 right-[-350px] w-[320px] h-full bg-white border-l border-gray-200 p-8 z-20 transition-all duration-500 ease-in-out shadow-l" id="drawer">
+                <span class="close-x text-2xl text-gray-400 cursor-pointer float-right hover:text-black" onclick="closeDrawer()">&times;</span>
+                <h3 id="dTitle" class="mt-0 text-xl font-bold text-gray-800">Project Name</h3>
+                <div class="h-1 w-12 bg-purple-500 mt-2 mb-6"></div>
+                <p id="dDesc" class="text-sm text-gray-600 leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOCIAL POSTS
 <section class="py-20 px-6 reveal" id="social">
     <h2 class="text-3xl font-bold text-center mb-10">Social Media Content</h2>
 
@@ -552,9 +273,9 @@ section {
         <img src="images/t1.webp" class="rounded-xl shadow-lg hover:scale-105 transition">
         <img src="images/b1.webp" class="rounded-xl shadow-lg hover:scale-105 transition">
     </div>
-</section>
+</section> -->
 
-<!-- LOGO SECTION -->
+<!-- LOGO SECTION
 <section class="py-20 text-center reveal" id="logos">
   <h2 class="text-3xl font-bold mb-10">Logo Designs</h2>
 
@@ -573,7 +294,9 @@ section {
       class="w-24 h-24 object-contain rounded-full opacity-70 hover:opacity-100 hover:scale-125 transition">
 
   </div>
-</section>
+</section> -->
+
+
 
 <!-- FLYERS -->
 <section class="py-20 text-center reveal" id="flyers">
@@ -747,169 +470,7 @@ section {
 <i class="fas fa-envelope"></i>
 </div>
 
-<!-- SCRIPT -->
-<script>
-// FILTER
-const filters = document.querySelectorAll('.filter');
-const items = document.querySelectorAll('.masonry-item');
-
-filters.forEach(btn=>{
-btn.onclick=()=>{
-filters.forEach(b=>b.classList.remove('bg-black','text-white'));
-btn.classList.add('bg-black','text-white');
-
-let f=btn.dataset.filter;
-
-items.forEach(item=>{
-item.style.display = (f==='all'||item.classList.contains(f))?'block':'none';
-});
-}
-});
-
-// SCROLL REVEAL
-const reveals = document.querySelectorAll('.reveal');
-
-function revealOnScroll(){
-let h = window.innerHeight;
-
-reveals.forEach(el=>{
-if(el.getBoundingClientRect().top < h-100){
-el.classList.add('active');
-}
-});
-}
-window.addEventListener('scroll',revealOnScroll);
-revealOnScroll();
-
-
-
-// BOOK SCROLL ROTATION
-const book = document.getElementById('book');
-window.addEventListener('scroll', () => {
-    if(book){
-        let s = window.scrollY;
-        book.style.transform = `rotateY(${20 - s*0.05}deg) rotateX(${10 - s*0.03}deg)`;
-    }
-});
-
-// PACKAGING ROTATION
-const box = document.getElementById('box');
-window.addEventListener('scroll', () => {
-    if(box){
-        let s = window.scrollY;
-        box.style.transform = `rotateY(${s*0.3}deg) rotateX(${s*0.1}deg)`;
-    }
-});
-
-// NAVBAR SCROLL EFFECT
-const navbar = document.getElementById('navbar');
-
-window.addEventListener('scroll', () => {
-if(window.scrollY > 50){
-    navbar.classList.add('nav-scrolled');
-} else {
-    navbar.classList.remove('nav-scrolled');
-}
-});
-
-const sections = document.querySelectorAll("section, footer");
-const navLinks = document.querySelectorAll(".nav-link");
-
-window.addEventListener("scroll", () => {
-let current = "";
-
-sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    if (scrollY >= sectionTop) {
-        current = section.getAttribute("id");
-    }
-});
-
-navLinks.forEach(link => {
-    link.classList.remove("text-black", "font-semibold");
-    if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("text-black", "font-semibold");
-    }
-});
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  // MOBILE MENU TOGGLE
-  const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  if(menuBtn && mobileMenu){
-    menuBtn.onclick = () => {
-      mobileMenu.classList.toggle("hidden");
-    };
-  }
-
-  // CLOSE MENU ON CLICK
-  document.querySelectorAll(".mobile-link").forEach(link => {
-    link.onclick = () => mobileMenu.classList.add("hidden");
-  });
-
-  // AUTO HIDE NAVBAR
-  let lastScroll = 0;
-  const navbar = document.getElementById("navbar");
-
-  window.addEventListener("scroll", () => {
-    let currentScroll = window.pageYOffset;
-
-    if(currentScroll > lastScroll && currentScroll > 80){
-        navbar.classList.add("nav-hidden");
-    } else {
-        navbar.classList.remove("nav-hidden");
-    }
-
-    lastScroll = currentScroll;
-  });
-
-  // SCROLL STYLE
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 50){
-        navbar.classList.add('nav-scrolled');
-    } else {
-        navbar.classList.remove('nav-scrolled');
-    }
-  });
-
-  // MAGNET EFFECT 🧲
-  const magnets = document.querySelectorAll(".magnet");
-
-  magnets.forEach(el => {
-    el.addEventListener("mousemove", (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-
-      el.style.transform = `translate(${x*0.2}px, ${y*0.2}px)`;
-    });
-
-    el.addEventListener("mouseleave", () => {
-      el.style.transform = "translate(0,0)";
-    });
-  });
-
-});
-
-window.addEventListener('scroll', () => {
-  if(window.scrollY > 50){
-      navbar.classList.add('nav-scrolled');
-  } else {
-      navbar.classList.remove('nav-scrolled');
-  }
-
-  let currentScroll = window.pageYOffset;
-  if(currentScroll > lastScroll && currentScroll > 80){
-      navbar.classList.add("nav-hidden");
-  } else {
-      navbar.classList.remove("nav-hidden");
-  }
-  lastScroll = currentScroll;
-});
-</script>
+<script src="test.js"></script>
 
 </body>
 </html>
