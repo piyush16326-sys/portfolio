@@ -1,0 +1,465 @@
+/* ================= GLOBAL ================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* prevent horizontal scroll */
+}
+
+body {
+  font-family: sans-serif;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+/* ================= BACKGROUND ================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+  background-repeat: repeat;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+/* ================= GRADIENT TEXT ================= */
+.gradient {
+  background: linear-gradient(90deg,#8b5cf6,#ec4899,#f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ================= HERO ================= */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 30% 30%, #8b5cf6, transparent 60%),
+    radial-gradient(circle at 70% 70%, #ec4899, transparent 60%),
+    radial-gradient(circle at 50% 50%, #f97316, transparent 60%);
+  opacity: 0.25;
+  z-index: -1;
+}
+
+/* ================= SCROLL REVEAL ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= MASONRY ================= */
+.masonry {
+  column-count: 3;
+  column-gap: 16px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+@media(max-width:1024px) {
+  .masonry { column-count: 2; column-gap: 12px; }
+}
+@media(max-width:768px) {
+  .masonry { column-count: 1; column-gap: 0; }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+/* ================= CARD ================= */
+.card {
+  transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+/* ================= IMAGES & VIDEOS ================= */
+.zoom-img {
+  transition: transform 0.8s ease;
+  border-radius: 12px;
+  max-width: 100%;
+  display: block;
+}
+.zoom-img:hover {
+  transform: scale(1.1);
+}
+
+/* ================= FILTER BAR ================= */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap; /* wrap buttons on mobile */
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 30px;
+  padding: 0 10px;
+}
+
+.filter-bar .filter {
+  flex: 1 1 auto;
+  min-width: 70px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+/* ================= DOCK ================= */
+.dock {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  padding: 12px 22px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  max-width: 95%;
+}
+.dock i {
+  font-size: 20px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.dock i:hover {
+  transform: translateY(-10px) scale(1.4);
+  color: #ec4899;
+}
+
+/* ================= NAV LINK ANIMATION ================= */
+.nav-link {
+  position: relative;
+  transition: 0.3s;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 1px;
+  background: black;
+  transition: 0.3s;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ================= SECTIONS ================= */
+section {
+  scroll-margin-top: 100px;
+}
+
+/* ================= NAVBAR SCROLL EFFECT ================= */
+.nav-scrolled#navbar {
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ================= MOBILE LINKS ================= */
+.mobile-link {
+  transition: 0.3s;
+}
+.mobile-link:hover {
+  opacity: 0.6;
+}
+
+/* ================= HIDE NAV ================= */
+.nav-hidden {
+  transform: translateY(-120%);
+  transition: transform 0.4s ease;
+}
+
+/* ================= MOBILE NAV LINKS FIX ================= */
+@media (max-width: 768px) {
+  .nav-links {
+    display: block !important;      /* switch from flex to block */
+  }
+  
+  .nav-links .nav-link,
+  .nav-links .mobile-link {
+    display: block !important;      /* stack links vertically */
+    margin-bottom: 12px;            /* spacing between links */
+  }
+
+}
+
+        .lanyard-system { 
+            perspective: 1200px; 
+            animation: swing 6s ease-in-out infinite; 
+            transform-origin: top center; 
+            position: relative; /* Add this if not already behaving */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: -50px;
+        }
+        
+        /* Realistic Woven Strap */
+        /* Realistic Woven Strap */
+.strap { 
+    width: 32px; 
+    height: 130px; 
+    /* Fallback to Blue if --lanyard-hex is missing */
+    background-color: var(--lanyard-hex, #242121c7); 
+    /* This creates the woven "fabric" texture */
+    background-image: 
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px),
+        linear-gradient(90deg, rgba(0,0,0,0.2) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.2) 100%);
+    margin: 0 auto; 
+    position: relative;
+    box-shadow: 
+        inset 0 0 10px rgba(0,0,0,0.3), /* Internal shadow for depth */
+        2px 5px 15px rgba(0,0,0,0.2);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+/* Vertical Text on Strap */
+.strap::after {
+    content: 'VISITOR • 2026 • STAFF';
+    /* Force vertical text */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: rgba(255, 255, 255, 0.5); /* Semi-transparent white looks like a print */
+    font-size: 9px; 
+    font-weight: 900; 
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+
+        .clip {
+            width: 36px; height: 12px; background: linear-gradient(90deg, #777, #bbb, #777);
+            margin: -2px auto 0; border-radius: 2px; position: relative; z-index: 2;
+        }
+
+        .id-card {
+    box-shadow: 
+        0 30px 60px -12px rgba(0,0,0,0.15), 
+        0 18px 36px -18px rgba(0,0,0,0.2);
+        border-radius: 10px;
+}
+
+
+        .id-card img { width: 75px; height: 75px; border-radius: 50%; background: #f0f0f0; margin-bottom: 12px; border: 3px solid #f4f1ea; }
+        
+        /* Boarding Pass Ticket */
+        .ticket {
+            width: 350px; height: 150px; background: #fff;
+            border-radius: 12px; display: flex; position: relative;
+            box-shadow: 0 0px 10px rgba(0,0,0,0.1);
+            transition: 0.4s ease; cursor: pointer; border: 1px solid #eee;
+            margin-left: auto;
+            margin-right: -30px;
+            top: 350px;
+        }
+        .ticket:hover { transform: translateY(-10px) rotateY(-5deg); }
+        .ticket::before, .ticket::after {
+            content: ''; position: absolute; left: 290px;
+            width: 24px; height: 24px; background: #f4f1ea; border-radius: 50%; z-index: 5;
+        }
+        .ticket::before { top: -12px; }
+        .ticket::after { bottom: -12px; }
+
+        .ticket-main { flex: 2.5; padding: 20px; border-right: 1.5px dashed #eee; }
+        .ticket-stub { flex: 1; padding: 20px; background: #fafafa; display: flex; flex-direction: column; justify-content: space-between; align-items: center;}
+        
+        .t-label { font-size: 8px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
+        .t-val { font-size: 13px; font-weight: 700; color: #333; }
+        .barcode { height: 40px; width: 100%; background: repeating-linear-gradient(90deg, #333 0, #333 2px, transparent 2px, transparent 4px); opacity: 0.7; }
+
+        @keyframes swing { 0%, 100% { transform: rotateZ(-3deg) rotateX(2deg); } 50% { transform: rotateZ(3deg) rotateX(4deg); } }
+
+@media screen and (max-width: 720px) {
+    /* Adjust Ticket */
+    .ticket {
+        width: 280px;      /* Smaller but readable */
+        height: 150px;
+        margin-right: 0;   /* Remove negative margin pushing it out */
+        top: 430px;         /* Move it up so it doesn't overlap text too much */
+        right: 70px;      /* Slight nudge to the right is okay, but keep it in view */
+    }
+
+    /* Adjust Ticket Dots (the holes in the ticket) */
+    .ticket::before, .ticket::after {
+        left: 190px;       /* Reposition the circle cutouts to match new width */
+    }
+
+    /* Adjust Lanyard */
+    .lanyard-system {
+        margin-left: -30px; /* Shift left slightly to make room for center text */
+        transform: scale(0.8); /* Scale down the whole lanyard system */
+        top: -20px;
+    }
+
+    /* Hide barcode on mobile to save space if needed */
+    .barcode {
+        display: none;
+    }
+}
+
+.explorer-container { 
+    min-height: 80vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 40px 20px; 
+}
+
+.explorer-window {
+    width: 100%; 
+    height: 500px; 
+    max-width: 1000px;
+    background: var(--win-bg);
+    backdrop-filter: blur(15px); /* Matches your dock's glassmorphism */
+    border: 1px solid var(--win-border);
+    border-radius: 16px; 
+    display: flex; 
+    flex-direction: column;
+    position: relative; 
+    overflow: hidden; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* ================= EXPLORER MOBILE FIXES ================= */
+@media (max-width: 768px) {
+    /* 1. Prevent global nav stacking from affecting explorer */
+    .win-sidebar {
+        width: 120px !important; /* Narrower sidebar on mobile */
+        min-width: 70px !important;
+        padding: 10px 5px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* 2. Hide text, keep only emojis in sidebar categories */
+    .nav-item {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 12px 0 !important;
+        font-size: 18px !important; /* Make emojis bigger */
+    }
+    
+    .nav-item span {
+        float: left;
+        color: black;
+        font-size: 13px;
+    }
+
+    /* 3. Make the explorer window height auto-adjust so it doesn't clip */
+    .explorer-window {
+        height: 80vh !important;
+        margin: 0 10px;
+    }
+
+    /* 4. Make drawer full-screen on mobile so it doesn't overlap text */
+    .win-drawer {
+        width: 100% !important;
+        right: -100% !important; /* Hide fully off screen */
+    }
+    
+    .win-drawer.open {
+        right: 0 !important;
+    }
+
+    /* 5. Adjust the folder grid columns for small screens */
+    #folderGrid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)) !important;
+        gap: 15px !important;
+        padding: 15px !important;
+    }
+}
+
+/* Ensure explorer sidebar is ignored by your global nav-links style */
+.win-sidebar .nav-item::after {
+    display: none !important;
+}
+
+
+/* Highlights the folder when selected */
+.active-folder {
+    background: rgba(139, 92, 246, 0.1) !important; /* Light purple */
+    border: 1px solid rgba(139, 92, 246, 0.2) !important;
+}
+
+/* Ensure the grid is scrollable if you have many projects */
+.win-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 20px;
+    align-content: start;
+}
+
+#folderGrid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    grid-auto-rows: min-content;
+    gap: 1.5rem;
+    min-height: 200px; /* Forces the area to be visible even if empty */
+}
+
+/* Ensure the window doesn't hide folders behind the sidebar */
+.win-body {
+    display: flex;
+    position: relative;
+    z-index: 10;
+}
+
+/* This is the magic line that makes it slide in */
+.win-drawer.open { 
+    right: 0 !important; 
+    box-shadow: -15px 0 30px rgba(0,0,0,0.1);
+}
+
+/* Ensure the drawer transition is smooth */
+.win-drawer {
+    position: absolute;
+    top: 0;
+    right: -350px; /* Hidden by default */
+    width: 320px;
+    height: 100%;
+    background: white;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 50; /* Ensure it stays above folders */
+}
+
+
+
+.active-folder {
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+
+
