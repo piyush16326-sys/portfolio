@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study — Piyush Agarwal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="case-study.css">
+</head>
+<body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <nav>
+        <a href="index.html" class="nav-logo">DEV·FOLIO</a>
+        <a href="index.html#work" class="nav-back">All Projects</a>
+        <a href="index.html#contact" class="nav-cta">Hire Me</a>
+    </nav>
+
+    <section class="cs-hero" id="heroSection">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="cs-hero-inner">
+            <div class="cs-category" id="display-category"></div>
+            <h1 class="cs-title" id="display-title"></h1>
+            <p class="cs-subtitle" id="display-hero-subtitle"></p>
+            <div class="cs-meta-row">
+                <div class="cs-meta-item"><span class="cs-meta-label">Client</span><span class="cs-meta-value" id="meta-client"></span></div>
+                <div class="cs-meta-item"><span class="cs-meta-label">Timeline</span><span class="cs-meta-value" id="meta-timeline"></span></div>
+                <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-value" id="meta-role"></span></div>
+                <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-value" id="meta-year"></span></div>
+                <div class="cs-meta-item"><span class="cs-meta-label">Status</span><span class="cs-meta-value" id="meta-status"></span></div>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+            Scroll
+        </div>
+    </section>
+
+    <div class="cs-mockup-section">
+        <div class="cs-mockup" id="heroMockup">
+            <div class="browser-chrome">
+                <div class="dot" style="background:#ff5f57"></div>
+                <div class="dot" style="background:#ffbd2e"></div>
+                <div class="dot" style="background:#28c940"></div>
+                <div class="url-bar" id="display-url-bar"></div>
+            </div>
+            <div class="mockup-inner" id="display-mockup-bg">
+                <div class="mockup-graphic" id="display-mockup-emoji"></div>
+                <div class="mockup-label" id="display-mockup-label"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-body">
+        <div class="cs-divider"><div class="div-num">01</div><div class="div-line"></div><div class="div-title">Overview</div></div>
+        <div class="cs-overview">
+            <div class="overview-text" id="display-overview-text"></div>
+            <div class="overview-aside">
+                <div class="aside-block">
+                    <span class="aside-label">Tech Stack</span>
+                    <div class="tech-pills" id="display-stack"></div>
+                </div>
+                <div class="aside-block">
+                    <span class="aside-label">Services</span>
+                    <div id="display-services" style="color:var(--muted);font-size:.78rem;line-height:1.8;"></div>
+                </div>
+                <div class="aside-block">
+                    <span class="aside-label">Live Project</span>
+                    <a href="#" id="display-live-link" target="_blank" style="color:var(--accent);font-size:.78rem;text-decoration:none;"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cs-divider reveal"><div class="div-num">02</div><div class="div-line"></div><div class="div-title">Strategy</div></div>
+        <div class="cs-two-col reveal">
+            <div class="col-block">
+                <span class="col-label">The Challenge</span>
+                <ul class="col-text" id="display-challenges"></ul>
+            </div>
+            <div class="col-block">
+                <span class="col-label">The Solution</span>
+                <ul class="col-text" id="display-solutions"></ul>
+            </div>
+        </div>
+
+        <div class="cs-divider reveal"><div class="div-num">03</div><div class="div-line"></div><div class="div-title">Interface Design</div></div>
+        <div class="screens-grid reveal" id="display-screens"></div>
+
+        <div class="cs-divider reveal"><div class="div-num">04</div><div class="div-line"></div><div class="div-title">Impact</div></div>
+        <div class="metrics-grid" id="display-metrics"></div>
+
+        <div class="cs-divider reveal"><div class="div-num">05</div><div class="div-line"></div><div class="div-title">Timeline</div></div>
+        <div class="cs-timeline reveal" id="display-timeline"></div>
+
+        <div class="cs-divider reveal"><div class="div-num">06</div><div class="div-line"></div><div class="div-title">Client Feedback</div></div>
+        <div class="cs-pullquote reveal">
+            <p class="pq-text" id="display-quote"></p>
+            <div class="pq-author">
+                <div class="pq-avatar" id="display-quote-emoji"></div>
+                <div><span class="pq-name" id="display-quote-name"></span><span class="pq-role" id="display-quote-role"></span></div>
+            </div>
+        </div>
+        <div style="height:100px"></div>
+    </div>
+
+    <div class="cs-next">
+        <span class="cs-next-label reveal">Next Project</span>
+        <h2 class="cs-next-title reveal" id="display-next-title"></h2>
+        <a href="#" class="btn-primary reveal" id="display-next-link">View Case Study →</a>
+    </div>
+
+    <footer>
+        <a href="index.html" class="footer-logo">DEV·FOLIO</a>
+        <span class="footer-text">© 2026 Piyush Agarwal · Portfolio</span>
+    </footer>
+
+    <script src="projects.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Validate Data Source
+        if (typeof PROJECTS === 'undefined') {
+            console.error("Data source 'projects.js' missing or variable 'PROJECTS' not found.");
+            return;
+        }
+
+        // 2. Identify Project from URL
+        const params = new URLSearchParams(window.location.search);
+        let id = params.get('id');
+
+        // Fallback to first project if ID is missing or invalid
+        if (!id || !PROJECTS[id]) {
+            id = Object.keys(PROJECTS)[0];
+            console.log(`Defaulting to first project: ${id}`);
+        }
+
+        const data = PROJECTS[id];
+        renderPage(data);
+    });
+
+    function renderPage(data) {
+        // --- THEME ---
+        document.title = `${data.title} | Case Study`;
+        document.documentElement.style.setProperty('--accent', data.accentColor);
+
+        // --- HERO ---
+        document.getElementById('display-category').textContent = `✦ ${data.category} · Case Study`;
+        document.getElementById('display-title').innerHTML = `<em>${data.title}</em><br>${data.subtitle}`;
+        document.getElementById('display-hero-subtitle').innerHTML = data.overview[0];
+        
+        document.getElementById('meta-client').textContent = data.client;
+        document.getElementById('meta-timeline').textContent = data.heroTimeline;
+        document.getElementById('meta-role').textContent = data.role;
+        document.getElementById('meta-year').textContent = data.year;
+        document.getElementById('meta-status').innerHTML = `<span style="color:var(--accent)">● ${data.status}</span>`;
+
+        // --- MOCKUP ---
+        const mockupBg = document.getElementById('display-mockup-bg');
+        const mockupEmoji = document.getElementById('display-mockup-emoji');
+        const mockupUrlBar = document.getElementById('display-url-bar');
+
+        // Set the URL Bar
+        mockupUrlBar.textContent = `🔒 ${data.liveUrl.replace(/(^\w+:|^)\/\//, '') || 'radhaenterprises.co.in'}`;
+
+        // Handle Image vs Emoji
+        if (data.mockupUrl) {
+            mockupEmoji.style.display = 'none';
+            
+            mockupBg.innerHTML = `
+                <img src="${data.mockupUrl}" 
+                     alt="${data.title}" 
+                     style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
+                <div class="mockup-label" id="display-mockup-label">${data.mockupLabel}</div>
+            `;
+        } else {
+            mockupBg.style.background = data.bgGradient;
+            mockupEmoji.textContent = data.emoji;
+            document.getElementById('display-mockup-label').textContent = data.mockupLabel;
+        }
+
+        // --- OVERVIEW & ASIDE ---
+        document.getElementById('display-overview-text').innerHTML = data.overview.map(p => `<p>${p}</p>`).join('');
+        document.getElementById('display-stack').innerHTML = data.stack.map(s => `<span class="tech-pill">${s}</span>`).join('');
+        document.getElementById('display-services').innerHTML = data.services.replace(/\n/g, '<br>');
+        
+        const liveBtn = document.getElementById('display-live-link');
+        liveBtn.href = data.liveUrl;
+        liveBtn.textContent = `${data.liveUrl.replace(/(^\w+:|^)\/\//, '')} →`;
+
+        // --- CHALLENGES ---
+        document.getElementById('display-challenges').innerHTML = data.challenges.map(li => `<li>${li}</li>`).join('');
+        document.getElementById('display-solutions').innerHTML = data.solutions.map(li => `<li>${li}</li>`).join('');
+
+        // --- SCREENS ---
+        document.getElementById('display-screens').innerHTML = data.screens.map(s => `
+            <div class="screen-card" style="${s.span ? 'grid-column: span 2' : ''}">
+                <div class="screen-bg" style="background:${s.bg}; position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+            
+            ${s.img ? `
+                <img src="${s.img}" 
+                     alt="${s.label}" 
+                     class="catalog-img"
+                     style="position: absolute; top: 0; left: 0; width: 100%; object-fit: cover; z-index: 1;"
+                />
+            ` : ''}
+                    <span style="font-size:3.5rem; animation: floaty 4s ease-in-out infinite">${s.emoji}</span>
+                </div>
+                <div class="screen-overlay"><span class="screen-label">${s.label}</span></div>
+            </div>
+        `).join('');
+
+        // --- METRICS ---
+        document.getElementById('display-metrics').innerHTML = data.metrics.map(m => {
+            const numOnly = m.value.replace(/[^0-9]/g, '');
+            const valAttr = (m.value.includes('.') || m.value.includes('s')) ? `data-val="${m.value}"` : `data-count="${numOnly}"`;
+            const suffixAttr = m.suffix ? `data-suffix="${m.suffix}"` : `data-suffix=""`;
+
+            return `
+                <div class="metric-card">
+                    <span class="metric-num" ${valAttr} ${suffixAttr}>0</span>
+                    <span class="metric-label">${m.label}</span>
+                    <span class="metric-delta">${m.delta}</span>
+                </div>
+            `;
+        }).join('');
+
+        // --- TIMELINE ---
+        document.getElementById('display-timeline').innerHTML = data.timeline.map(t => `
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div>
+                    <span class="tl-week">${t.weeks}</span>
+                    <div class="tl-task">${t.title}</div>
+                    <p class="tl-desc">${t.desc}</p>
+                </div>
+            </div>
+        `).join('');
+
+        // --- FOOTER & TESTIMONIAL ---
+        document.getElementById('display-quote').textContent = `"${data.quote}"`;
+        document.getElementById('display-quote-emoji').textContent = data.quoteEmoji;
+        document.getElementById('display-quote-name').textContent = data.quoteName;
+        document.getElementById('display-quote-role').textContent = data.quoteRole;
+
+        const next = PROJECTS[data.nextProject];
+        if (next) {
+            document.getElementById('display-next-title').innerHTML = `${next.title} — <em>${next.subtitle}</em>`;
+            document.getElementById('display-next-link').href = `case-study.html?id=${data.nextProject}`;
+        }
+
+        startAnimations();
+    }
+
+    function startAnimations() {
+        // Standard Intersection Observer
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.reveal, .cs-divider, .cs-overview, .cs-two-col, .screens-grid, .metrics-grid, .cs-timeline, .cs-pullquote').forEach(el => obs.observe(el));
+        
+        setTimeout(() => document.getElementById('heroMockup').classList.add('visible'), 300);
+
+        // Counter Logic
+        const cobs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if(!e.isIntersecting) return;
+                const el = e.target;
+                const suffix = el.getAttribute('data-suffix') || ""; 
+                
+                if(el.dataset.val) { 
+                    el.textContent = el.dataset.val; 
+                    cobs.unobserve(el); 
+                    return; 
+                }
+                
+                const target = parseInt(el.dataset.count);
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += target / 50;
+                    if(current >= target) { 
+                        el.textContent = target + suffix; 
+                        clearInterval(timer); 
+                    } else { 
+                        el.textContent = Math.floor(current) + suffix; 
+                    }
+                }, 20);
+                cobs.unobserve(el);
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('[data-count], [data-val]').forEach(el => cobs.observe(el));
+
+        // Cursor Movement
+        const cursor=document.getElementById('cursor'), ring=document.getElementById('cursorRing');
+        let mx=0, my=0, rx=0, ry=0;
+        document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+        (function anim(){ rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(anim); })();
+        
+        window.addEventListener('scroll', () => { 
+            document.getElementById('progressBar').style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%'; 
+        });
+    }
+    </script>
+</body>
+</html>
