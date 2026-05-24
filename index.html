@@ -3,696 +3,2243 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Web Developer & Freelancer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
 
-<title>AI Content Specialist</title>
+<style>
+  /* ============================================================
+   WORK EXPERIENCE MODULE (ISOLATED & SAFELY SCOPED)
+   ============================================================ */
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<script>
-tailwind.config = {
-    theme: {
-        extend: {
-            colors: {
-                primary: '#8b5cf6',
-                secondary: '#ec4899',
-                accent: '#f97316'
-            }
-        }
-    }
+/* Main Section Background & Padding */
+.exp-section-wrap {
+  padding: 120px 60px;
+  position: relative;
+  background: var(--bg);
 }
-</script>
+.exp-section-wrap.alt {
+  background: var(--surface);
+}
+
+/* Section Header Typography & Decorators */
+.exp-section-tag {
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.exp-section-tag::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.exp-section-heading {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -.03em;
+  line-height: 1.05;
+  margin-bottom: 48px;
+}
+.exp-section-heading em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Core Two-Column Layout Grid */
+.exp-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  align-items: start;
+}
+
+/* Left Sidebar Navigation (Vertical Stack) */
+.exp-nav {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  padding-right: 0;
+  position: sticky;
+  top: 40px;
+  border-bottom: 0px;
+}
+
+/* Individual Navigation Tabs */
+.exp-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 24px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all .3s;
+  position: relative;
+  font-size: .75rem;
+  letter-spacing: .05em;
+  color: var(--muted);
+}
+.exp-tab:hover {
+  color: var(--text);
+  border-left-color: rgba(200,240,59,.3);
+  background: rgba(255,255,255,.02);
+}
+.exp-tab.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: rgba(200,240,59,.04);
+}
+
+/* Logo Box Inside Tab Link */
+.exp-tab-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+.exp-tab-co {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: .8rem;
+}
+.exp-tab-role {
+  display: block;
+  font-size: .6rem;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+/* Content Container & Center Alignment Mechanism */
+.exp-panels {
+  padding-left: 25px;
+  justify-content: center;
+}
+.exp-panel {
+  display: none;
+  animation: panel-in .4s ease both;
+  width: 100%;
+  max-width: 100%; /* Restricts word width for optimized scannability */
+}
+.exp-panel.active {
+  display: block;
+}
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Experience Metadata Header */
+.exp-header {
+  margin-bottom: 28px;
+}
+.exp-company {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -.03em;
+  margin-bottom: 6px;
+}
+.exp-role-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.exp-meta {
+  display: flex;
+  gap: 20px;
+  font-size: .7rem;
+  color: var(--muted);
+}
+.exp-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.exp-desc {
+  font-size: .82rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* Experience Bullet Lists */
+.exp-bullets {
+  list-style: none;
+  margin-bottom: 28px;
+}
+.exp-bullets li {
+  font-size: .78rem;
+  line-height: 1.7;
+  color: var(--muted);
+  padding: 5px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.exp-bullets li::before {
+  content: '→';
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Tech Stack Tool Pills */
+.exp-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.exp-pill {
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-size: .6rem;
+  letter-spacing: .08em;
+  padding: 4px 10px;
+  color: var(--muted);
+  transition: all .3s;
+  cursor: default;
+}
+.exp-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Contextual Employment Status Badges */
+.exp-type-badge {
+  display: inline-block;
+  font-size: .55rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.full-time { background: rgba(74,222,128,.1); color: var(--green); border: 1px solid rgba(74,222,128,.2); }
+.freelance { background: rgba(200,240,59,.1); color: var(--accent); border: 1px solid rgba(200,240,59,.2); }
+.intern { background: rgba(123,156,255,.1); color: var(--accent3); border: 1px solid rgba(123,156,255,.2); }
+
+
+/* ============================================================
+   RESPONSIVE DESIGN (BREAKPOINT: 900PX)
+   ============================================================ */
+@media (max-width: 900px) {
+  .exp-section-wrap {
+    padding: 80px 24px;
+  }
+  .exp-layout {
+    grid-template-columns: 1fr; /* Drop multi-column structure */
+  }
+  .exp-nav {
+    flex-direction: row; /* Turn sidebar layout into a touch sliding row wrapper */
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    padding-bottom: 0;
+    margin-bottom: 32px;
+    position: static;
+    -webkit-overflow-scrolling: touch; /* Enable smooth iOS momentum scrolling */
+  }
+  .exp-tab {
+    flex-shrink: 0;
+    border-left: none;
+    border-bottom: 2px solid transparent; /* Move active indicator accent line to bottom edge */
+    padding: 12px 20px;
+  }
+  .exp-tab.active {
+    border-left: none;
+    border-bottom-color: var(--accent);
+  }
+  .exp-panels {
+    padding-left: 0;
+  }
+  .exp-panel {
+    max-width: 100%; /* Drop page constraints on small phone layouts */
+  }
+}
+</style>
 
 <style>
 
-/* ================= GLOBAL ================= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+  /* ============================================================
+   2. GITHUB CONTRIBUTION STREAK MAP
+   ============================================================ */
+#github{}
+.github-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:40px;}
+.github-card{background:var(--card);border:1px solid var(--border);padding:28px;position:relative;overflow:hidden;}
+.github-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,var(--accent),transparent 60%);}
+.gh-stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.8rem;color:var(--accent);line-height:1;display:block;}
+.gh-stat-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-top:6px;}
+.gh-streak-fire{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:2.5rem;animation:fire-pulse 2s ease-in-out infinite;}
+@keyframes fire-pulse{0%,100%{transform:translateY(-50%) scale(1);}50%{transform:translateY(-55%) scale(1.08);}}
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden; /* prevent horizontal scroll */
-}
+/* Contribution grid */
+.contrib-section{background:var(--card);border:1px solid var(--border);padding:28px;overflow:hidden;}
+.contrib-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.contrib-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;}
+.contrib-count{font-size:.7rem;color:var(--muted);}
+.contrib-count strong{color:var(--accent);}
 
-body {
-  font-family: sans-serif;
+.contrib-grid-wrap{overflow-x:auto;padding-bottom:8px;}
+.contrib-grid{display:flex;gap:3px;align-items:flex-start;}
+.contrib-week{display:flex;flex-direction:column;gap:3px;}
+.contrib-day{
+  width:11px;height:11px;border-radius:2px;
+  background:var(--surface);border:1px solid rgba(255,255,255,.04);
+  cursor:pointer;transition:transform .15s;position:relative;
+}
+.contrib-day:hover{transform:scale(1.4);z-index:10;}
+.contrib-day[data-level="1"]{background:#1a3a0a;border-color:#2a5a10;}
+.contrib-day[data-level="2"]{background:#2d6614;border-color:#3d8a1c;}
+.contrib-day[data-level="3"]{background:#4a9e20;border-color:#5ab82a;}
+.contrib-day[data-level="4"]{background:#78d035;border-color:#9ae048;}
+.contrib-day[data-level="5"]{background:#c8f03b;border-color:#d8f860;box-shadow:0 0 6px rgba(200,240,59,.4);}
+
+.contrib-months{display:flex;gap:3px;margin-bottom:6px;padding-left:0;}
+.contrib-month-label{font-size:.55rem;color:var(--muted);letter-spacing:.05em;text-align:center;}
+
+.contrib-legend{display:flex;align-items:center;gap:6px;margin-top:12px;justify-content:flex-end;}
+.contrib-legend span{font-size:.6rem;color:var(--muted);}
+.legend-boxes{display:flex;gap:3px;}
+.legend-box{width:11px;height:11px;border-radius:2px;}
+
+/* Tooltip */
+.contrib-tooltip{
+  position:fixed;background:var(--card2);border:1px solid var(--border2);
+  padding:6px 10px;font-size:.62rem;color:var(--text);pointer-events:none;
+  z-index:1000;white-space:nowrap;opacity:0;transition:opacity .15s;
+  box-shadow:0 4px 20px rgba(0,0,0,.6);
+}
+.contrib-tooltip.show{opacity:1;}
+
+/* Language bars */
+.lang-section{margin-top:24px;}
+.lang-title{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.lang-bar-row{margin-bottom:12px;}
+.lang-bar-header{display:flex;justify-content:space-between;margin-bottom:5px;font-size:.7rem;}
+.lang-name{color:var(--text);}
+.lang-pct{color:var(--muted);}
+.lang-bar-track{height:4px;background:var(--surface);border-radius:2px;overflow:hidden;}
+.lang-bar-fill{height:100%;border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+
+/* ============================================================
+   3. HOLOPIN BADGES
+   ============================================================ */
+#badges{}
+.badges-intro{font-size:.82rem;line-height:1.7;color:var(--muted);max-width:580px;margin-bottom:48px;}
+.badges-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px;}
+.badge-card{
+  background:var(--card);border:1px solid var(--border);
+  padding:20px 16px;text-align:center;
+  position:relative;overflow:hidden;cursor:pointer;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  group:true;
+}
+.badge-card:hover{transform:translateY(-6px) scale(1.02);border-color:rgba(255,255,255,.15);box-shadow:0 16px 40px rgba(0,0,0,.5);}
+.badge-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04),transparent);opacity:0;transition:opacity .3s;}
+.badge-card:hover::after{opacity:1;}
+
+.badge-shine{
+  position:absolute;top:-50%;left:-60%;width:40%;height:200%;
+  background:linear-gradient(to right,transparent,rgba(255,255,255,.06),transparent);
+  transform:rotate(20deg);transition:left .5s;pointer-events:none;
+}
+.badge-card:hover .badge-shine{left:120%;}
+
+.badge-icon{font-size:2.5rem;display:block;margin-bottom:10px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));}
+.badge-name{font-size:.62rem;letter-spacing:.06em;color:var(--muted);display:block;line-height:1.4;}
+.badge-event{font-size:.58rem;color:var(--accent);display:block;margin-top:3px;opacity:.8;}
+.badge-rarity{
+  position:absolute;top:8px;right:8px;
+  font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:2px 6px;border-radius:100px;
+}
+.rarity-common{background:rgba(122,120,112,.2);color:var(--muted);border:1px solid rgba(122,120,112,.3);}
+.rarity-rare{background:rgba(123,156,255,.15);color:var(--accent3);border:1px solid rgba(123,156,255,.3);}
+.rarity-epic{background:rgba(192,132,252,.15);color:var(--accent4);border:1px solid rgba(192,132,252,.3);}
+.rarity-legendary{background:rgba(251,191,36,.15);color:var(--yellow);border:1px solid rgba(251,191,36,.3);}
+
+.badges-board-link{
+  display:inline-flex;align-items:center;gap:10px;margin-top:32px;
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);border:1px solid rgba(200,240,59,.3);
+  padding:10px 24px;text-decoration:none;transition:all .3s;
+}
+.badges-board-link:hover{background:var(--accent);color:var(--bg);}
+</style>
+
+<style>
+  /* ============================================================
+   2. GITHUB CONTRIBUTION STREAK MAP (Integrated)
+   ============================================================ */
+#github {
+  padding: 120px 60px; /* Aligns with desktop spacing implicit in your media query */
   position: relative;
-  z-index: 1;
-  margin: 0;
 }
 
-/* ================= BACKGROUND ================= */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-  background-repeat: repeat;
-  opacity: 0.2;
-  z-index: -1;
+.github-layout {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop instead of 2 for a cleaner horizontal row */
+  gap: 24px;
+  margin-bottom: 40px;
 }
 
-/* ================= GRADIENT TEXT ================= */
-.gradient {
-  background: linear-gradient(90deg,#8b5cf6,#ec4899,#f97316);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ================= HERO ================= */
-.hero {
-  height: 100vh;
+.github-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
 }
 
-.hero-bg {
+.github-card::before {
+  content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(circle at 30% 30%, #8b5cf6, transparent 60%),
-    radial-gradient(circle at 70% 70%, #ec4899, transparent 60%),
-    radial-gradient(circle at 50% 50%, #f97316, transparent 60%);
-  opacity: 0.25;
-  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, var(--accent), transparent 60%);
 }
 
-/* ================= SCROLL REVEAL ================= */
-.reveal {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 1s cubic-bezier(0.22,1,0.36,1);
-}
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ================= MASONRY ================= */
-.masonry {
-  column-count: 3;
-  column-gap: 16px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-@media(max-width:1024px) {
-  .masonry { column-count: 2; column-gap: 12px; }
-}
-@media(max-width:768px) {
-  .masonry { column-count: 1; column-gap: 0; }
-}
-
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 16px;
-  width: 100%;
-}
-
-/* ================= CARD ================= */
-.card {
-  transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
-}
-.card:hover {
-  transform: translateY(-8px) scale(1.03);
-}
-
-/* ================= IMAGES & VIDEOS ================= */
-.zoom-img {
-  transition: transform 0.8s ease;
-  border-radius: 12px;
-  max-width: 100%;
+.gh-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 3vw, 2.8rem); /* Prevent overlapping on medium tablet screens */
+  color: var(--accent);
+  line-height: 1;
   display: block;
 }
-.zoom-img:hover {
-  transform: scale(1.1);
+
+.gh-stat-label {
+  font-size: .65rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-top: 8px;
 }
 
-/* ================= FILTER BAR ================= */
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap; /* wrap buttons on mobile */
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 30px;
-  padding: 0 10px;
-}
-
-.filter-bar .filter {
-  flex: 1 1 auto;
-  min-width: 70px;
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-/* ================= DOCK ================= */
-.dock {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 20px;
-  padding: 12px 22px;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(20px);
-  border-radius: 30px;
-  max-width: 95%;
-}
-.dock i {
-  font-size: 20px;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.dock i:hover {
-  transform: translateY(-10px) scale(1.4);
-  color: #ec4899;
-}
-
-/* ================= NAV LINK ANIMATION ================= */
-.nav-link {
-  position: relative;
-  transition: 0.3s;
-}
-.nav-link::after {
-  content: "";
+.gh-streak-fire {
   position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0%;
-  height: 1px;
-  background: black;
-  transition: 0.3s;
-}
-.nav-link:hover::after {
-  width: 100%;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: fire-pulse 2s ease-in-out infinite;
 }
 
-/* ================= SECTIONS ================= */
-section {
-  scroll-margin-top: 100px;
+@keyframes fire-pulse {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-53%) scale(1.08); }
 }
 
-/* ================= NAVBAR SCROLL EFFECT ================= */
-.nav-scrolled#navbar {
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+/* --- Contribution grid --- */
+.contrib-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 28px;
+  overflow: hidden;
 }
 
-/* ================= MOBILE LINKS ================= */
-.mobile-link {
-  transition: 0.3s;
-}
-.mobile-link:hover {
-  opacity: 0.6;
-}
-
-/* ================= HIDE NAV ================= */
-.nav-hidden {
-  transform: translateY(-120%);
-  transition: transform 0.4s ease;
+.contrib-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-/* ================= MOBILE NAV LINKS FIX ================= */
-@media (max-width: 768px) {
-  .nav-links {
-    display: block !important;      /* switch from flex to block */
+.contrib-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+.contrib-count {
+  font-size: .7rem;
+  color: var(--muted);
+}
+
+.contrib-count strong {
+  color: var(--accent);
+}
+
+.contrib-grid-wrap {
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+.contrib-grid {
+  display: flex;
+  gap: 3px;
+  align-items: flex-start;
+  min-width: max-content; /* Prevents grid deformation when scrolling horizontally */
+}
+
+.contrib-week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contrib-day {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, .04);
+  cursor: pointer;
+  transition: transform .15s;
+  position: relative;
+}
+
+.contrib-day:hover {
+  transform: scale(1.4);
+  z-index: 10;
+}
+
+/* Color levels matching your design system */
+.contrib-day[data-level="1"] { background: #1a3a0a; border-color: #2a5a10; }
+.contrib-day[data-level="2"] { background: #2d6614; border-color: #3d8a1c; }
+.contrib-day[data-level="3"] { background: #4a9e20; border-color: #5ab82a; }
+.contrib-day[data-level="4"] { background: #78d035; border-color: #9ae048; }
+.contrib-day[data-level="5"] { background: #c8f03b; border-color: #d8f860; box-shadow: 0 0 6px rgba(200, 240, 59, .4); }
+
+.contrib-months {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 6px;
+  padding-left: 0;
+}
+
+.contrib-month-label {
+  font-size: .55rem;
+  color: var(--muted);
+  letter-spacing: .05em;
+}
+
+.contrib-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  justify-content: flex-end;
+}
+
+.contrib-legend span {
+  font-size: .6rem;
+  color: var(--muted);
+}
+
+.legend-boxes {
+  display: flex;
+  gap: 3px;
+}
+
+.legend-box {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+}
+
+/* --- Tooltip --- */
+.contrib-tooltip {
+  position: fixed;
+  background: var(--card2, #161616); /* Added fallback standard syntax */
+  border: 1px solid var(--border2, var(--border));
+  padding: 6px 10px;
+  font-size: .62rem;
+  color: var(--text);
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .15s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .6);
+}
+
+.contrib-tooltip.show {
+  opacity: 1;
+}
+
+/* --- Language bars --- */
+.lang-section {
+  margin-top: 32px;
+}
+
+.lang-title {
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.lang-bar-row {
+  margin-bottom: 12px;
+}
+
+.lang-bar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: .7rem;
+}
+
+.lang-name {
+  color: var(--text);
+}
+
+.lang-pct {
+  color: var(--muted);
+}
+
+.lang-bar-track {
+  height: 4px;
+  background: var(--surface);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.lang-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.2s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ============================================================
+   RESPONSIVE OVERRIDES (Fits smoothly inside your existing MQ)
+   ============================================================ */
+@media (max-width: 900px) {
+  #github {
+    padding: 80px 24px; /* Matches your other section paddings */
   }
   
-  .nav-links .nav-link,
-  .nav-links .mobile-link {
-    display: block !important;      /* stack links vertically */
-    margin-bottom: 12px;            /* spacing between links */
+  .github-layout {
+    grid-template-columns: repeat(2, 1fr); /* Snaps neatly to a 2x2 grid on tablets/mobile */
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .github-layout {
+    grid-template-columns: 1fr; /* 1 vertical stack on ultra-small viewports */
+  }
+}
+</style>
+
+<style>
+  /* ============================================================
+   HOLOPIN BADGES
+============================================================ */
+
+:root{
+  --accent4:#c084fc;
+  --yellow:#fbbf24;
+}
+
+/* Section */
+#badges{
+  padding:120px 60px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Intro */
+#badges .badges-intro{
+  font-size:.82rem;
+  line-height:1.7;
+  color:var(--muted);
+  max-width:580px;
+  margin-bottom:48px;
+}
+
+/* Grid */
+#badges .badges-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:16px;
+}
+
+/* Card */
+#badges .badge-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:20px 16px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition:
+    transform .3s,
+    border-color .3s,
+    box-shadow .3s;
+}
+
+/* Hover */
+#badges .badge-card:hover{
+  transform:translateY(-6px) scale(1.02);
+  border-color:rgba(255,255,255,.15);
+  box-shadow:0 16px 40px rgba(0,0,0,.5);
+}
+
+#badges .badge-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.04),
+      transparent
+    );
+  opacity:0;
+  transition:opacity .3s;
+}
+
+#badges .badge-card:hover::after{
+  opacity:1;
+}
+
+/* Shine Effect */
+#badges .badge-shine{
+  position:absolute;
+  top:-50%;
+  left:-60%;
+  width:40%;
+  height:200%;
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(255,255,255,.06),
+      transparent
+    );
+
+  transform:rotate(20deg);
+  transition:left .5s;
+  pointer-events:none;
+}
+
+#badges .badge-card:hover .badge-shine{
+  left:120%;
+}
+
+/* Image */
+#badges .badge-img{
+  width:72px;
+  height:72px;
+  object-fit:contain;
+  margin-bottom:12px;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));
+}
+
+/* Name */
+#badges .badge-name{
+  font-size:.62rem;
+  letter-spacing:.06em;
+  color:var(--text);
+  display:block;
+  line-height:1.4;
+}
+
+/* Event */
+#badges .badge-event{
+  font-size:.58rem;
+  color:var(--accent);
+  display:block;
+  margin-top:4px;
+  opacity:.8;
+}
+
+/* Rarity */
+#badges .badge-rarity{
+  position:absolute;
+  top:8px;
+  right:8px;
+
+  font-size:.5rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+
+  padding:2px 6px;
+  border-radius:100px;
+}
+
+/* Rarity Colors */
+#badges .rarity-common{
+  background:rgba(122,120,112,.2);
+  color:var(--muted);
+  border:1px solid rgba(122,120,112,.3);
+}
+
+#badges .rarity-rare{
+  background:rgba(123,156,255,.15);
+  color:var(--accent3);
+  border:1px solid rgba(123,156,255,.3);
+}
+
+#badges .rarity-epic{
+  background:rgba(192,132,252,.15);
+  color:var(--accent4);
+  border:1px solid rgba(192,132,252,.3);
+}
+
+#badges .rarity-legendary{
+  background:rgba(251,191,36,.15);
+  color:var(--yellow);
+  border:1px solid rgba(251,191,36,.3);
+}
+
+/* Button */
+#badges .badges-board-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:32px;
+
+  font-size:.72rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+
+  color:var(--accent);
+
+  border:1px solid rgba(200,240,59,.3);
+
+  padding:10px 24px;
+
+  text-decoration:none;
+  transition:all .3s;
+}
+
+#badges .badges-board-link:hover{
+  background:var(--accent);
+  color:var(--bg);
+}
+
+/* Mobile */
+@media (max-width:900px){
+
+  #badges{
+    padding:80px 24px;
   }
 
+  #badges .badges-grid{
+    grid-template-columns:
+      repeat(auto-fill,minmax(120px,1fr));
+  }
 }
 </style>
 </head>
+<body>
 
-<body class="bg-white text-gray-800">
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-
-<!-- APPLE STYLE NAVBAR -->
-<!-- PRO APPLE NAVBAR -->
-<nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
-
-    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3 backdrop-blur-xl bg-white/70 rounded-full mt-4 shadow-sm">
-
-        <!-- LOGO -->
-        <div class="font-semibold text-sm tracking-wide">
-            PIYUSH
-        </div>
-
-        <!-- DESKTOP MENU -->
-        <div class="hidden md:flex gap-8 text-sm text-gray-700">
-            <a href="#home" class="nav-link magnet">Home</a>
-            <a href="#about" class="nav-link magnet">About</a>
-            <a href="#work" class="nav-link magnet">Work</a>
-            <a href="#social" class="nav-link magnet">Social</a>
-        </div>
-
-        <!-- RIGHT -->
-        <div class="hidden md:block">
-            <a href="mailto:piyush16326@gmail.com"
-               class="px-4 py-1.5 rounded-full border border-gray-300 hover:bg-black hover:text-white transition magnet">
-                Contact
-            </a>
-        </div>
-
-        <!-- MOBILE BUTTON -->
-        <div class="md:hidden text-xl cursor-pointer" id="menu-btn">
-            <i class="fas fa-bars"></i>
-        </div>
-
-    </div>
-
-    <!-- MOBILE MENU -->
-<div id="mobile-menu" class="flex flex-col items-center gap-6 mt-4 py-6 backdrop-blur-xl bg-white/80 rounded-2xl mx-6 text-sm hidden">
-    <a href="#home" class="mobile-link">Home</a>
-    <a href="#about" class="mobile-link">About</a>
-    <a href="#work" class="mobile-link">Work</a>
-    <a href="#social" class="mobile-link">Social</a>
-    <a href="#contact" class="mobile-link">Contact</a>
-</div>
-
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">DEV·FOLIO</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="hire.html" class="nav-cta">Hire Me</a></li>
+  </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero text-center" id="home">
-<div class="hero-bg"></div>
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
 
-<h1 class="text-5xl md:text-7xl font-black mb-6 reveal">
-Hi, I'm <span class="gradient">Piyush</span><br>
-I Create AI-Powered<br>Social Media Content
-</h1>
+  <!-- Floating shapes -->
+  <div class="float-shape shape-ring" style="top: 20%; left: 30%; animation-delay: -2s;"></div>
 
-<p class="max-w-xl text-gray-600 reveal">
-Learning and building with AI tools to create product visuals,
-reels, and content ideas for modern brands.
-</p>
-</section>
-
-
-<!-- COVER MOCKUP -->
-<section class="py-32 flex justify-center items-center reveal" style="perspective:1000px;">
-    <div id="book" style="
-        width:260px;
-        height:360px;
-        background:url('data:image/jpeg;base64,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') center/cover;
-        border-radius:12px;
-        box-shadow:0 40px 80px rgba(0,0,0,0.3);
-        transform:rotateY(20deg) rotateX(10deg);
-        transition:1s;
-    "></div>
-</section>
-
-<!-- ABOUT -->
-<section class="py-20 px-6 text-center max-w-3xl mx-auto reveal" id="about">
-    <h2 class="text-3xl font-bold mb-6">About Me</h2>
-    <p class="text-gray-600">
-        I am an AI-powered Social Media Content Creator specializing in product visuals,
-        viral reels, and high-conversion content strategies. I combine AI tools,
-        creative thinking, and trend research to produce content that drives engagement,
-        growth, and brand identity.
+  <div class="hero-content">
+    <div class="hero-tag">Available for freelance</div> 
+    <h1 class="hero-name">
+      Hello, I'm<br>
+      <span class="line-accent">Piyush Agarwal</span>
+    </h1>
+    <h2 class="hero-title">Software Engineer</h2>
+    <p class="hero-desc">
+      I craft pixel-perfect, high-performance digital experiences that convert visitors into loyal customers. Specializing in modern web apps, interactive UIs, and scalable solutions.
     </p>
-</section>
-
-<!-- SOCIAL POSTS -->
-<section class="py-20 px-6 reveal" id="social">
-    <h2 class="text-3xl font-bold text-center mb-10">Social Media Content</h2>
-
-    <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-        <img src="images/8.webp" class="rounded-xl shadow-lg hover:scale-105 transition">
-        <img src="images/f1.webp" class="rounded-xl shadow-lg hover:scale-105 transition">
-        <img src="images/t1.webp" class="rounded-xl shadow-lg hover:scale-105 transition">
-        <img src="images/b1.webp" class="rounded-xl shadow-lg hover:scale-105 transition">
+    <div class="hero-btns">
+      <a href="#work" class="btn-primary">View My Work →</a>
+      <a href="hire.html" class="btn-secondary">Let's Talk</a>
     </div>
-</section>
-
-<!-- LOGO SECTION -->
-<section class="py-20 text-center reveal" id="logos">
-  <h2 class="text-3xl font-bold mb-10">Logo Designs</h2>
-
-  <div class="flex justify-center gap-10 flex-wrap">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmkZ52n2GL8Po3JaH3BIzanTZerjVxDwD8LQ&s"
-      class="w-24 h-24 object-contain rounded-full opacity-70 hover:opacity-100 hover:scale-125 transition">
-
-    <img src="images/logo2.jpg"
-      class="w-24 h-24 object-contain rounded-full opacity-70 hover:opacity-100 hover:scale-125 transition">
-
-    <img src="https://quicklearn-rtu.netlify.app/images/nav_logo.png"
-      class="w-24 h-24 object-contain rounded-full opacity-70 hover:opacity-100 hover:scale-125 transition">
-
-    <img src="https://www.radhaenterprises.co.in/img/radha_enterprises_logo.png"
-      class="w-24 h-24 object-contain rounded-full opacity-70 hover:opacity-100 hover:scale-125 transition">
-
   </div>
-</section>
 
-<!-- FLYERS -->
-<section class="py-20 text-center reveal" id="flyers">
-  <h2 class="text-3xl font-bold mb-10">Cover Designs</h2>
-
-  <!-- Responsive flex container -->
-  <div class="flex flex-wrap justify-center gap-6">
-
-    <div class="relative w-48 h-64 rounded-xl overflow-hidden rotate-[-8deg] hover:rotate-0 hover:scale-110 transition">
-      <img src="images/flyer.jpeg" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent"></div>
-    </div>
-
-    <div class="relative w-48 h-64 rounded-xl overflow-hidden rotate-[-8deg] hover:rotate-0 hover:scale-110 transition">
-      <img src="images/flyer2.jpeg" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent"></div>
-    </div>
-
-    <div class="relative w-48 h-64 rounded-xl overflow-hidden rotate-[-8deg] hover:rotate-0 hover:scale-110 transition">
-      <img src="images/flyer3.jpg" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent"></div>
-    </div>
-
-  </div>
-</section>
-<!-- PACKAGING -->
-<section class="py-32 flex flex-col items-center justify-center reveal" id="packaging">
-    <h2 class="text-3xl font-bold mb-10">Packaging Design</h2>
-
-    <div class="glass-wrap">
-    <img src="images/bottle.png" class="bottle-glass" width="300px" height="100%">
-    <div class="liquid"></div>
-</div>
-</section>
-
-<!-- FEATURES -->
-<section class="py-20 bg-gray-50 px-6 reveal" id="features">
-  <h2 class="text-3xl font-bold text-center mb-12">What I Bring</h2>
-
-  <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto justify-items-start">
-
-    <div>
-      <img src="images/wib1.jpg" class="w-full max-w-sm h-48 object-cover mb-4 rounded-lg shadow-lg" alt="Create">
-      <h3 class="font-bold">AI Product Images</h3>
-      <p class="text-sm opacity-70">Create high-quality visuals using AI tools with realistic scenes and ad creatives.</p>
-    </div>
-
-    <div>
-      <img src="images/cr.png" class="w-full max-w-sm h-48 object-cover mb-4 rounded-lg shadow-lg" alt="Content Research">
-      <h3 class="font-bold">Content Research</h3>
-      <p class="text-sm opacity-70">Analyze trends, competitors, and viral formats to generate winning ideas.</p>
-    </div>
-
-    <div>
-      <div class="masonry-item reels card mb-4">
-        <video class="w-full max-w-sm h-48 object-cover rounded-lg shadow-lg"
-               loop muted autoplay playsinline
-               poster="images/video-thumbnail.jpg"
-               preload="auto">
-          <source src="images/gbar.mp4" type="video/mp4">
-          <img src="images/video-thumbnail.jpg" alt="Video thumbnail" class="w-full max-w-sm h-48 object-cover rounded-lg shadow-lg">
-        </video>
+  <!-- Hanging props -->
+  <div class="hanging-zone">
+    <div class="string string-1"></div>
+    <div class="string string-2"></div>
+    <div class="string string-3"></div>
+    <div class="hang-item hang-item-1">
+      <div class="hang-card">
+        <span class="label">Projects</span>
+        <span class="value">5+</span>
       </div>
-      <h3 class="font-bold">Reels & Videos</h3>
-      <p class="text-sm opacity-70">Short-form content optimized for reach, retention, and engagement.</p>
     </div>
-
-    <div>
-      <img src="images/smm.png" class="w-full max-w-sm h-48 object-cover mb-4 rounded-lg shadow-lg" alt="Execution">
-      <h3 class="font-bold">Execution</h3>
-      <p class="text-sm opacity-70">Fast creation, testing, iteration, and organized workflow systems.</p>
+    <div class="hang-item hang-item-2">
+      <div class="hang-card">
+        <span class="label">Status</span>
+        <span class="value" style="color: var(--accent);">● Open</span>
+      </div>
     </div>
+    <div class="hang-item hang-item-3">
+      <div class="hang-card">
+        <span class="label">Experience</span>
+        <span class="value">2 Yrs</span>
+      </div>
+    </div>
+  </div>
 
+  <!-- 3D Rotating Cube -->
+  <div class="cube-wrapper">
+    <div class="cube">
+      <div class="cube-face front">⚡</div>
+      <div class="cube-face back">🎨</div>
+      <div class="cube-face left">🚀</div>
+      <div class="cube-face right">💡</div>
+      <div class="cube-face top">🌐</div>
+      <div class="cube-face bottom">✨</div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll to explore
   </div>
 </section>
 
-<!-- WORK -->
-<section class="py-20 px-6 max-w-7xl mx-auto reveal" id="work">
-
-
-<h2 class="text-3xl font-bold text-center mb-10">My Work</h2>
-
-<div class="filter-bar">
-<button class="filter px-5 py-2 bg-black text-white rounded-full" data-filter="all">All</button>
-<button class="filter px-5 py-2 border rounded-full" data-filter="product">Products</button>
-<button class="filter px-5 py-2 border rounded-full" data-filter="reels">Reels</button>
-<button class="filter px-5 py-2 border rounded-full" data-filter="research">Research</button>
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Web Development</span>
+    <span>UI/UX Design</span>
+    <span>React & Next.js</span>
+    <span>Freelance Projects</span>
+    <span>API Integration</span>
+    <span>E-Commerce</span>
+    <span>Mobile-First Design</span>
+    <span>Performance Optimization</span>
+    <span>Web Development</span>
+    <span>UI/UX Design</span>
+    <span>React & Next.js</span>
+    <span>Freelance Projects</span>
+    <span>API Integration</span>
+    <span>E-Commerce</span>
+    <span>Mobile-First Design</span>
+    <span>Performance Optimization</span>
+  </div>
 </div>
 
-<div class="masonry">
-
-<div class="masonry-item product card">
-
-<img src="images/bar.png" class="zoom-img shadow-lg">
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num" data-count="5">0</span>
+    <span class="stat-label">Projects Delivered</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num" data-count="5">0</span>
+    <span class="stat-label">Happy Clients</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num" data-count="2">0</span>
+    <span class="stat-label">Years Experience</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num" data-count="99">0</span>
+    <span class="stat-label">% Client Satisfaction</span>
+  </div>
 </div>
 
-
-<div class="masonry-item research card">
-<img src="images/research.png" class="zoom-img shadow-lg">
-</div>
-
-<div class="masonry-item reels card mx-auto">
-  <video class="zoom-img shadow-lg w-full max-w-xs rounded-lg"
-         loop muted autoplay playsinline
-         poster="images/https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQElb383HweQ3tix_EPLrw5wMPGCfXL7rD14w&s"
-         preload="auto">
-    <source src="images/reel1.mp4" type="video/mp4">
-    <img src="images/https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQElb383HweQ3tix_EPLrw5wMPGCfXL7rD14w&s" alt="Video thumbnail" class="w-full max-w-xs rounded-lg shadow-lg">
-  </video>
-</div>
-
-<div class="masonry-item product card">
-<img src="images/pack.png" class="zoom-img shadow-lg">
-</div>
-
-<div class="masonry-item product card">
-<img src="images/bottle.png" class="zoom-img shadow-lg">
-</div>
-
-</div>
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="about-left reveal">
+    <div class="about-photo-wrap">
+      <div class="about-photo-placeholder">
+        <div class="photo-emoji-display">👨‍💻</div>
+      </div>
+      <div class="about-photo-deco"></div>
+      <div class="about-photo-tag">Available ✓</div>
+      <div class="about-exp-badge">
+        <span class="num">2+</span>
+        <span class="txt">Years of<br>Experience</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-right reveal">
+    <div class="section-tag">About Me</div>
+    <h2 class="section-heading">
+      I Build Things<br>That <em>Live</em> on<br>The Web
+    </h2>
+    <p class="about-text">
+      I'm a Software Engineer and creative freelancer based in Jaipur, India. With 2+ years of crafting digital experiences, I bridge the gap between great design and solid engineering.
+    </p>
+    <p class="about-text">
+      From sleek landing pages to complex web applications, I bring ideas to life with clean code, thoughtful design, and an obsession with performance and user experience.
+    </p>
+    <div class="skills-grid">
+      <div class="skill-tag">React</div>
+      <div class="skill-tag">Next.js</div>
+      <div class="skill-tag">PHP</div>
+      <div class="skill-tag">TypeScript</div>
+      <div class="skill-tag">CSS</div>
+      <div class="skill-tag">Tailwind CSS</div>
+      <div class="skill-tag">MySql</div>
+      <div class="skill-tag">JavaScript</div>
+      <div class="skill-tag">Flutter Flow</div>
+    </div>
+  </div>
 </section>
 
+<!-- Experience -->
+<section class="exp-section-wrap" id="experience">
+  <div class="exp-section-tag reveal">Experience</div>
+  <h2 class="exp-section-heading reveal">Companies I've <em>Worked With</em></h2>
 
-<section class="py-20 bg-gray-50 text-center px-6 reveal" id="process">
-  <h2 class="text-3xl font-bold mb-12">How I Work</h2>
+  <div class="exp-layout reveal">
 
-  <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto text-sm">
+    <!-- TAB NAVIGATION -->
+    <nav class="exp-nav">
+      <div class="exp-tab active" onclick="switchExp(this,'exp-startup')">
+        <div class="exp-tab-logo">🚀</div>
+        <div class="exp-tab-info">
+          <span class="exp-tab-co">SoftServ Solutions</span>
+          <span class="exp-tab-role">Software Engineer Intern</span>
+        </div>
+      </div>
+      <div class="exp-tab" onclick="switchExp(this,'exp-techcorp')">
+        <div class="exp-tab-logo">🏢</div>
+        <div class="exp-tab-info">
+          <span class="exp-tab-co">Sysquare Technologies</span>
+          <span class="exp-tab-role">Web Dev Intern</span>
+        </div>
+      </div>
+      <div class="exp-tab" onclick="switchExp(this,'exp-studio')">
+        <div class="exp-tab-logo">🎨</div>
+        <div class="exp-tab-info">
+          <span class="exp-tab-co">Celebal Technologies</span>
+          <span class="exp-tab-role">Web Dev Intern</span>
+        </div>
+      </div>
+      <div class="exp-tab" onclick="switchExp(this,'exp-freelance')">
+        <div class="exp-tab-logo">💼</div>
+        <div class="exp-tab-info">
+          <span class="exp-tab-co">Self-employed</span>
+          <span class="exp-tab-role">Freelancer</span>
+        </div>
+      </div>
+    </nav>
 
-    <div class="flex flex-col items-center">
-      <img src="images/analytics.png" class="w-20 h-20 mb-4" alt="Research">
-      <h3 class="font-bold">Research</h3>
-      <p>Trends & competitors</p>
+    <!-- CONTENT PANELS -->
+    <div class="exp-panels">
+
+      <!-- PANEL 1 -->
+      <div class="exp-panel active" id="exp-startup">
+        <div class="exp-header">
+          <div class="exp-company">SoftServ Solutions<span class="exp-type-badge intern">Internship</span></div>
+          <div class="exp-role-tag">Software Engineer Intern</div>
+          <div class="exp-meta">
+            <span>📅 May 2026 – Present</span>
+            <span>📍 Jaipur</span>
+            <span>👥 50-200 employees</span>
+          </div>
+        </div>
+        <p class="exp-desc">Tech startup building custom software. First engineering intern — wore many hats from UI development to App Development features.</p>
+        <ul class="exp-bullets">
+          <li>Built a highly scalable enterprise admin dashboard from scratch: engineered a library of reusable UI components and unified design tokens across the application</li>
+          <li>Designed and developed a highly optimized Custom Data Table component featuring advanced client-side filtering, multi-column sorting, and seamless backend pagination</li>
+          <li>Increased dashboard loading efficiency and data rendering speed by 28% through optimized API state management and debounced query execution</li>
+          <li>Shipped 3 core dashboard modules solo from Figma design to production using FlutterFlow's visual builder and custom Dart code.</li>
+        </ul>
+        <div class="exp-tech">
+          <span class="exp-pill">Flutter Flow</span><span class="exp-pill">Flutter</span><span class="exp-pill">Dart</span>
+          <span class="exp-pill">Firebase</span><span class="exp-pill">Custom Widgets</span><span class="exp-pill">Figma</span>
+        </div>
+      </div>
+
+      <!-- PANEL 2 -->
+      <div class="exp-panel" id="exp-techcorp">
+        <div class="exp-header">
+          <div class="exp-company">Sysquare Technologies <span class="exp-type-badge full-time">Intern</span></div>
+          <div class="exp-role-tag">Web Dev Intern</div>
+          <div class="exp-meta">
+            <span>📅 Oct 2024 – April 2025</span>
+            <span>📍 Jaipur, Rajasthan</span>
+            <span>👥 11-50 employees</span>
+          </div>
+        </div>
+        <p class="exp-desc">Expert in engineering high-concurrency Inventory Management Systems and scalable SPAs for the Export/Manufacturing sector. Proven track record of improving web performance by 50% and delivering data-driven UI solutions.</p>
+        <ul class="exp-bullets">
+          <li>Inventory SPA (JC Home Tex): Developed a high-concurrency React SPA for garment inventory; implemented complex state logic for 5,000+ SKUs, reducing data errors by 40%.</li>
+          <li>Performance: Optimized API polling and asset rendering, improving dashboard load speed by 50% for warehouse operations.</li>
+          <li>System Design: Built 20+ reusable UI components, accelerating feature deployment by 20%.</li>
+          <li>Collaboration: Integrated 25+ RESTful endpoints and resolved 50+ cross-browser UI defects.</li>
+        </ul>
+        <div class="exp-tech">
+          <span class="exp-pill">React.js</span><span class="exp-pill">TypeScript</span><span class="exp-pill">jQuery</span>
+          <span class="exp-pill">MySQL</span><span class="exp-pill">Postman</span><span class="exp-pill">REST API</span>
+          <span class="exp-pill">MUI</span><span class="exp-pill">AG Grid</span><span class="exp-pill">Git</span>
+        </div>
+      </div>
+
+      <!-- PANEL 3 -->
+      <div class="exp-panel" id="exp-studio">
+        <div class="exp-header">
+          <div class="exp-company">Celebal Technologies <span class="exp-type-badge freelance">Intern</span></div>
+          <div class="exp-role-tag">Web Developer Intern</div>
+          <div class="exp-meta">
+            <span>📅 Jun 2023 – Aug 2023</span>
+            <span>📍 Remote</span>
+            <span>👥 1000-5000 employees</span>
+          </div>
+        </div>
+        <p class="exp-desc">Boutique creative agency specializing in award-winning websites for luxury brands and funded startups. Delivered 18 client projects across 22 months, with 3 winning Awwwards recognitions.</p>
+        <ul class="exp-bullets">
+          <li>Built 18 client websites from Figma to production, including 3 that won Awwwards / CSS Design Awards</li>
+          <li>Developed reusable GSAP animation library used across all agency projects, saving 40% dev time</li>
+          <li>Integrated WebGL / Three.js experiences for 6 clients — including a luxury car configurator</li>
+          <li>Collaborated directly with creative directors to translate abstract concepts into working interactions</li>
+          <li>Maintained 100% on-time delivery record across all 18 projects</li>
+        </ul>
+        <div class="exp-tech">
+          <span class="exp-pill">GSAP</span><span class="exp-pill">Three.js</span><span class="exp-pill">GLSL</span>
+          <span class="exp-pill">Next.js</span><span class="exp-pill">Webflow</span><span class="exp-pill">Lenis</span>
+          <span class="exp-pill">Barba.js</span><span class="exp-pill">Sanity CMS</span>
+        </div>
+      </div>
+
+      <!-- PANEL 4 -->
+      <div class="exp-panel" id="exp-freelance">
+        <div class="exp-header">
+          <div class="exp-company">Self-employed <span class="exp-type-badge freelance">Freelance</span></div>
+          <div class="exp-role-tag">Independent Web Developer</div>
+          <div class="exp-meta">
+            <span>📅 2024 – Present</span>
+            <span>📍 Jaipur + Remote</span>
+            <span>👥 2 clients served</span>
+          </div>
+        </div>
+        <p class="exp-desc">Running a boutique freelance practice alongside full-time work. Specialize in high-conversion landing pages, custom web apps, and performance rescues for small–medium businesses across India and internationally.</p>
+        <ul class="exp-bullets">
+          <li>Completed 80+ projects for 50+ clients across India, US, UK, and UAE</li>
+          <li>Maintained 4.9/5 average rating across Toptal, Upwork, and direct clients</li>
+          <li>Built e-commerce stores that collectively process ₹2Cr+ in annual transactions</li>
+          <li>Speciality: taking existing sites from sub-50 Lighthouse scores to 90+ within 2 weeks</li>
+          <li>5 clients have been on retainer for 2+ years continuously</li>
+        </ul>
+        <div class="exp-tech">
+          <span class="exp-pill">Next.js</span><span class="exp-pill">Shopify</span><span class="exp-pill">WordPress</span>
+          <span class="exp-pill">WooCommerce</span><span class="exp-pill">Stripe</span><span class="exp-pill">Vercel</span>
+          <span class="exp-pill">Netlify</span><span class="exp-pill">Cloudflare</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="services-header reveal">
+    <div class="section-tag">What I Do</div>
+    <h2 class="section-heading">Services I<br><em>Specialise</em> In</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <span class="service-icon">🌐</span>
+      <h3 class="service-title">Web Development</h3>
+      <p class="service-desc">Custom, high-performance websites built with modern frameworks. From simple landing pages to complex web applications that scale.</p>
+    </div>
+    <div class="service-card" style="transition-delay: 0.1s">
+      <span class="service-num">02</span>
+      <span class="service-icon">🎨</span>
+      <h3 class="service-title">UI/UX Design</h3>
+      <p class="service-desc">Stunning interfaces that delight users. I translate wireframes and ideas into pixel-perfect, accessible, and conversion-focused designs.</p>
+    </div>
+    <div class="service-card" style="transition-delay: 0.2s">
+      <span class="service-num">03</span>
+      <span class="service-icon">⚡</span>
+      <h3 class="service-title">Performance Audit</h3>
+      <p class="service-desc">Speed kills — slow websites lose customers. I audit and optimize your site for Core Web Vitals, achieving 90+ Lighthouse scores.</p>
+    </div>
+    <div class="service-card" style="transition-delay: 0.3s">
+      <span class="service-num">04</span>
+      <span class="service-icon">🛒</span>
+      <h3 class="service-title">E-Commerce</h3>
+      <p class="service-desc">Shopify, WooCommerce, or custom solutions — I build stores that convert browsers into buyers with seamless checkout experiences.</p>
+    </div>
+    <div class="service-card" style="transition-delay: 0.4s">
+      <span class="service-num">05</span>
+      <span class="service-icon">📱</span>
+      <h3 class="service-title">Mobile-First</h3>
+      <p class="service-desc">Every project is built mobile-first, responsive by default, and tested across all devices for a flawless experience everywhere.</p>
+    </div>
+    <div class="service-card" style="transition-delay: 0.5s">
+      <span class="service-num">06</span>
+      <span class="service-icon">🔌</span>
+      <h3 class="service-title">API & Backend</h3>
+      <p class="service-desc">RESTful APIs, GraphQL, serverless functions, and database architecture. I build the backbone that powers your frontend beautifully.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORK ===== -->
+<section id="work">
+  <div class="work-header">
+    <div>
+      <div class="section-tag">Selected Work</div>
+      <h2 class="section-heading reveal">Recent <em>Projects</em></h2>
+    </div>
+    <a href="case-study.html" class="btn-secondary">View All →</a>
+  </div>
+  <div class="projects-grid">
+    <!-- Featured Project -->
+    <div class="project-card featured">
+      <div class="project-thumb">
+        <div class="project-thumb-bg project-thumb-1">
+          <div style="font-size: 5rem; animation: float-orb 4s ease-in-out infinite;">
+            <img src="image/home.png" alt="interiordesign">
+          </div>
+        </div>
+        <div class="project-overlay">
+          <a style="text-decoration: none;" href="/case-study.html?id=radhaenterprises">
+          <div class="project-arrow">View Case Study →</div> </a>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">Enterprises</span>
+          <span class="project-tag">PHP</span>
+          <span class="project-tag">Catalog</span>
+        </div>
+        <h3 class="project-title">Radha Enterprises — Premium Interior Designer</h3>
+        <p class="project-sub">Discover modern interior design solutions with Radha Enterprises. Transform your home with stylish kitchens, bedrooms, and more. Explore now!</p>
+      </div>
     </div>
 
-    <div class="flex flex-col items-center">
-      <img src="images/create.png" class="w-20 h-20 mb-4" alt="Create">
-      <h3 class="font-bold">Create</h3>
-      <p>Visuals & reels</p>
+    <div class="project-card">
+      <div class="project-thumb">
+        <div class="project-thumb-bg project-thumb-2">
+          <div style="font-size: 4rem; animation: bounce-custom 2.5s ease-in-out infinite;">
+            <img src="image/ngo2.png" alt="ngo">
+          </div>
+        </div>
+        <div class="project-overlay">
+          <a style="text-decoration: none;" href="/case-study.html?id=cfhrsw">
+          <div class="project-arrow">View Case Study →</div>
+          </a>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">PHP</span>
+          <span class="project-tag">NGO</span>
+          <span class="project-tag">Organization</span>
+        </div>
+        <h3 class="project-title">CFHRSW — NGO Website</h3>
+        <p class="project-sub">Real-time data visualization platform for enterprise clients with custom chart components.</p>
+      </div>
     </div>
 
-    <div class="flex flex-col items-center">
-      <img src="images/search.png" class="w-20 h-20 mb-4" alt="Test">
-      <h3 class="font-bold">Test</h3>
-      <p>Analyze results</p>
+    <!-- <div class="project-card">
+      <div class="project-thumb">
+        <div class="project-thumb-bg project-thumb-3">
+          <div style="font-size: 4rem; animation: pulse-slow 3s ease-in-out infinite;">🎯</div>
+        </div>
+        <div class="project-overlay">
+          <div class="project-arrow">View Case Study →</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">Agency</span>
+          <span class="project-tag">GSAP</span>
+          <span class="project-tag">Three.js</span>
+        </div>
+        <h3 class="project-title">Vertex Studio — Creative Agency</h3>
+        <p class="project-sub">Award-winning agency portfolio with 3D animations, WebGL effects, and cinematic scroll experiences.</p>
+      </div>
     </div>
 
-    <div class="flex flex-col items-center">
-      <img src="images/success.png" class="w-20 h-20 mb-4" alt="Optimize">
-      <h3 class="font-bold">Optimize</h3>
-      <p>Improve performance</p>
+    <div class="project-card" style="transition-delay: 0.3s">
+      <div class="project-thumb">
+        <div class="project-thumb-bg project-thumb-4">
+          <div style="font-size: 4rem; animation: wiggle 2s ease-in-out infinite;">🏠</div>
+        </div>
+        <div class="project-overlay">
+          <div class="project-arrow">View Case Study →</div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">Real Estate</span>
+          <span class="project-tag">Maps API</span>
+          <span class="project-tag">Node.js</span>
+        </div>
+        <h3 class="project-title">NestFind — Real Estate Platform</h3>
+        <p class="project-sub">Property listing platform with virtual tours, neighbourhood insights, and intelligent search.</p>
+      </div>
+    </div> -->
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     2. GITHUB CONTRIBUTION MAP
+     ════════════════════════════════════════════════════════════ -->
+<section id="github" style="padding:120px 60px;">
+  <h2 style="margin-bottom:20px;font-family:'Syne',sans-serif;">
+    GitHub Activity
+  </h2>
+
+  <div class="gh-stats">
+    <div class="gh-card">
+      <span class="gh-num" id="statStreak">—</span>
+      <span class="gh-lbl">Current streak 🔥</span>
     </div>
 
+    <div class="gh-card">
+      <span class="gh-num" id="statTotal">—</span>
+      <span class="gh-lbl">Contributions</span>
+    </div>
+
+    <div class="gh-card">
+      <span class="gh-num" id="statLongest">—</span>
+      <span class="gh-lbl">Longest streak</span>
+    </div>
+
+    <div class="gh-card">
+      <span class="gh-num" id="statRepos">—</span>
+      <span class="gh-lbl">Public repos</span>
+    </div>
+  </div>
+
+  <div class="contrib-box">
+    <div class="contrib-top">
+      <span class="contrib-title">Contribution Graph</span>
+      <span class="contrib-count">
+        <strong id="totalInline">0</strong> contributions
+      </span>
+    </div>
+
+    <div class="grid-scroll">
+      <div class="month-row" id="monthRow"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <div class="legend">
+      <span>Less</span>
+      <div style="display:flex;gap:3px">
+        <div class="leg-box" style="background:var(--border)"></div>
+        <div class="leg-box" style="background:#1a3a0a"></div>
+        <div class="leg-box" style="background:#2d6614"></div>
+        <div class="leg-box" style="background:#4a9e20"></div>
+        <div class="leg-box" style="background:#78d035"></div>
+        <div class="leg-box" style="background:#c8f03b"></div>
+      </div>
+      <span>More</span>
+    </div>
+
+    <div class="lang-section" id="langSection">
+      <div class="lang-title">Top languages</div>
+      <div style="color:var(--muted);font-size:12px">Loading...</div>
+    </div>
+  </div>
+
+  <div class="tip" id="tip"></div>
+</section>
+
+<!-- Section Separator Line -->
+<div class="page-divider"></div>
+
+
+
+<!-- ===== PROCESS ===== -->
+<section id="process">
+  <div class="reveal" style="text-align: center; margin-bottom: 20px;">
+    <div class="section-tag" style="justify-content: center;">How I Work</div>
+    <h2 class="section-heading">My Creative <em>Process</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <h3 class="step-title">Discovery</h3>
+      <p class="step-desc">Deep dive into your goals, audience, and competitive landscape. I ask the right questions to understand what success looks like.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <h3 class="step-title">Strategy</h3>
+      <p class="step-desc">Define the technical architecture, design system, and roadmap. Planning upfront prevents costly pivots later.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <h3 class="step-title">Design</h3>
+      <p class="step-desc">Wireframes to high-fidelity prototypes. Every interaction is intentional, every pixel purposeful.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <h3 class="step-title">Develop</h3>
+      <p class="step-desc">Clean, maintainable code with regular check-ins and transparent progress. No surprises, ever.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">05</div>
+      <h3 class="step-title">Launch</h3>
+      <p class="step-desc">Thorough testing, performance optimization, and a smooth handoff with documentation and ongoing support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARALLAX TEXT ===== -->
+<div class="parallax-section">
+  <div class="parallax-text" id="parallaxText">CRAFTING DIGITAL EXPERIENCES SINCE 2024 · CRAFTING DIGITAL EXPERIENCES SINCE 2024 ·</div>
+</div>
+
+<!-- ===== SCROLLING SHOWCASE ===== -->
+<section id="showcase">
+  <div class="showcase-row">
+    <div class="showcase-item sc-1">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-spin">⚛️</span>
+        <span class="showcase-label">React Apps</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-2">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-bounce">🚀</span>
+        <span class="showcase-label">Next.js Sites</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-3">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-pulse-slow">🎨</span>
+        <span class="showcase-label">UI Design</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-4">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-wiggle">📱</span>
+        <span class="showcase-label">Mobile-First</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-5">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-spin" style="animation-direction: reverse;">🌐</span>
+        <span class="showcase-label">Web Apps</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-6">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-bounce">⚡</span>
+        <span class="showcase-label">Performance</span>
+      </div>
+    </div>
+    <!-- Duplicate for infinite scroll -->
+    <div class="showcase-item sc-1">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-spin">⚛️</span>
+        <span class="showcase-label">React Apps</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-2">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-bounce">🚀</span>
+        <span class="showcase-label">Next.js Sites</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-3">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-pulse-slow">🎨</span>
+        <span class="showcase-label">UI Design</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-4">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-wiggle">📱</span>
+        <span class="showcase-label">Mobile-First</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-5">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-spin" style="animation-direction: reverse;">🌐</span>
+        <span class="showcase-label">Web Apps</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-6">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-bounce">⚡</span>
+        <span class="showcase-label">Performance</span>
+      </div>
+    </div>
+  </div>
+  <div class="showcase-row reverse" style="margin-top: 20px;">
+    <div class="showcase-item sc-4">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-wiggle">🛒</span>
+        <span class="showcase-label">E-Commerce</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-5">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-bounce">🔌</span>
+        <span class="showcase-label">API & Backend</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-6">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-pulse-slow">🗄️</span>
+        <span class="showcase-label">Databases</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-1">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-spin">🔒</span>
+        <span class="showcase-label">Auth & Security</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-2">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-wiggle">☁️</span>
+        <span class="showcase-label">Cloud Deploy</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-3">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-bounce">🎯</span>
+        <span class="showcase-label">SEO & Core Web</span>
+      </div>
+    </div>
+    <!-- Duplicate -->
+    <div class="showcase-item sc-4">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-wiggle">🛒</span>
+        <span class="showcase-label">E-Commerce</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-5">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-bounce">🔌</span>
+        <span class="showcase-label">API & Backend</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-6">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-pulse-slow">🗄️</span>
+        <span class="showcase-label">Databases</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-1">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-spin">🔒</span>
+        <span class="showcase-label">Auth & Security</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-2">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-wiggle">☁️</span>
+        <span class="showcase-label">Cloud Deploy</span>
+      </div>
+    </div>
+    <div class="showcase-item sc-3">
+      <div class="showcase-item-inner">
+        <span class="showcase-emoji animate-bounce">🎯</span>
+        <span class="showcase-label">SEO & Core Web</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HANGING TECH PROPS ===== -->
+<div class="hanging-section">
+  <div class="hang-container">
+    <div class="hang-prop">
+      <div class="hang-rope"></div>
+      <div class="hang-box">
+        <span class="icon">⚛️</span>
+        <span class="name">React</span>
+      </div>
+    </div>
+    <div class="hang-prop">
+      <div class="hang-rope" style="height: 80px;"></div>
+      <div class="hang-box">
+        <span class="icon">▲</span>
+        <span class="name">Next.js</span>
+      </div>
+    </div>
+    <div class="hang-prop">
+      <div class="hang-rope" style="height: 40px;"></div>
+      <div class="hang-box">
+        <span class="icon">🟢</span>
+        <span class="name">Mysql</span>
+      </div>
+    </div>
+    <div class="hang-prop">
+      <div class="hang-rope" style="height: 90px;"></div>
+      <div class="hang-box">
+        <span class="icon">🐘</span>
+        <span class="name">Php</span>
+      </div>
+    </div>
+    <div class="hang-prop">
+      <div class="hang-rope" style="height: 50px;"></div>
+      <div class="hang-box">
+        <span class="icon">🎨</span>
+        <span class="name">Figma</span>
+      </div>
+    </div>
+    <div class="hang-prop">
+      <div class="hang-rope" style="height: 70px;"></div>
+      <div class="hang-box">
+        <span class="icon">🐙</span>
+        <span class="name">GitHub</span>
+      </div>
+    </div>
+    <div class="hang-prop">
+      <div class="hang-rope" style="height: 45px;"></div>
+      <div class="hang-box">
+        <span class="icon">📱</span>
+        <span class="name">FlutterFlow</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     3.  HOLOPIN BADGES
+     ════════════════════════════════════════════════════════════ -->
+<section class="section-wrap" id="badges">
+  <div class="section-tag reveal">Holopin Board</div>
+  <h2 class="section-heading reveal">Badges &amp; <em>Stickers</em></h2>
+  <p class="badges-intro reveal">
+    Badges earned from open-source contributions, hackathons, and community events. Each one represents shipped code, learned skills, or people helped.
+    <br><br>
+    <!--
+      HOW TO EMBED YOUR REAL HOLOPIN BOARD:
+      Replace the badges below with your actual Holopin widget:
+      <a href="https://holopin.io/@YOURUSERNAME">
+        <img src="https://holopin.me/YOURUSERNAME" alt="Holopin board" style="max-width:100%">
+      </a>
+      Or keep the custom grid below and just update the data.
+    -->
+  </p>
+
+<div class="badges-grid reveal" id="badgesContainer">
+  </div>
+
+  <a href="https://holopin.io/@piyushagarwal" target="_blank" class="badges-board-link reveal">
+    View Full Holopin Board →
+  </a>
+</section>
+
+<div class="page-divider"></div>
+
+<!-- ===== VIDEO SECTION ===== -->
+<!-- <section id="video-section">
+  <div class="section-tag reveal" style="justify-content: center;">Watch</div>
+  <h2 class="section-heading reveal">See How I <em>Work</em></h2>
+  <p class="reveal" style="color: var(--muted); font-size: 0.82rem; margin-top: 8px;">A quick look at my workflow and design process</p>
+  <div class="video-wrapper reveal" onclick="this.innerHTML='<iframe width=\'100%\' height=\'100%\' src=\'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1\' frameborder=\'0\' allowfullscreen style=\'position:absolute;inset:0\'></iframe>'">
+    <div class="video-placeholder">
+      <div class="video-bg-anim"></div>
+      <div class="play-btn">▶</div>
+      <div class="video-caption">My Design-to-Code Workflow · 4 min</div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="reveal" style="text-align: center;">
+    <div class="section-tag" style="justify-content: center;">Testimonials</div>
+    <h2 class="section-heading">What Clients <em>Say</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-text">Piyush delivered our NGO Website 3 days ahead of schedule, and the quality blew us away. Conversion rates jumped 40% compared to our old site. Will absolutely work together again.</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">👩‍💼</div>
+        <div>
+          <span class="author-name">Saroj</span>
+          <span class="author-role">Secretary, CFHRSW</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card" style="transition-delay: 0.1s">
+      <div class="testimonial-text">The website Piyush built handles 100+ products data with filters and search feature. His technical depth is extraordinary — he anticipated problems before they became problems.</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">👨‍💻</div>
+        <div>
+          <span class="author-name">Ajit</span>
+          <span class="author-role">CEO, Radha Enterprises</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card" style="transition-delay: 0.2s">
+      <div class="testimonial-text">Our agency portfolio won two awards this year, and a huge part of that is Piyush's work. The animations and 3D effects are unlike anything I've seen from a single developer.</div>
+      <div class="testimonial-author">
+        <div class="author-avatar">🎨</div>
+        <div>
+          <span class="author-name">Priya Sharma</span>
+          <span class="author-role">Creative Director, Vertex Studio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="contact-big">
+        Ready to build<br>something <em>great</em>?
+      </h2>
+      <p style="font-size: 0.82rem; color: var(--muted); line-height: 1.7; max-width: 380px;">
+        Whether you have a project in mind, need a second opinion on your tech stack, or just want to say hi — my inbox is always open.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:piyush16326@gmail.com" class="contact-link">
+          <span class="icon">✉️</span>
+          piyush16326@gmail.com
+        </a>
+        <a href="tel:+919352025189" class="contact-link">
+          <span class="icon">📞</span>
+          +91 9352025189
+        </a>
+        <a href="#" class="contact-link">
+          <span class="icon">📍</span>
+          Jaipur, Rajasthan, India
+        </a>
+        <a href="https://github.com/piyush16326-sys" class="contact-link">
+          <span class="icon">💼</span>
+          LinkedIn Profile
+        </a>
+        <a href="https://github.com/piyush16326-sys" class="contact-link">
+          <span class="icon">🐙</span>
+          GitHub Profile
+        </a>
+      </div>
+    </div>
+    <form action="https://formspree.io/f/xdabovqa" method="POST" class="contact-form reveal">
+  
+  <div class="form-group">
+    <label class="form-label">Your Name</label>
+    <input type="text" name="name" class="form-input" placeholder="Jane Doe" required>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Email Address</label>
+    <input type="email" name="email" class="form-input" placeholder="jane@company.com" required>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Project Type</label>
+    <input type="text" name="project_type" class="form-input" placeholder="Web App / E-Commerce / Portfolio...">
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Message</label>
+    <textarea name="message" class="form-textarea" rows="5" placeholder="Tell me about your project, timeline, and budget..." required></textarea>
+  </div>
+
+  <button type="submit" class="btn-primary" style="width: 100%; text-align: center; cursor: pointer; border: none;">
+    Send Message →
+  </button>
+
+</form>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="py-16 text-center reveal" id="contact">
-<h2 class="text-2xl font-bold mb-4">Let’s Work Together</h2>
-<p class="text-gray-500 mb-6">Available for internships & freelance</p>
-
-<a href="mailto:piyush16326@gmail.com">
-
-<p class="text-xs text-gray-400 mt-10">© 2026 AI Studio</p>
+<footer>
+  <a href="#" class="footer-logo">DEV·FOLIO</a>
+  <span class="footer-text">© 2026 Piyush Agarwal · Built with ☕ & passion</span>
+  <div class="footer-socials">
+    <a href="#" class="footer-social">𝕏</a>
+    <a href="https://github.com/piyush16326-sys" class="footer-social">in</a>
+    <a href="#" class="footer-social">⌥</a>
+    <a href="#" class="footer-social">⚙</a>
+  </div>
 </footer>
 
-<!-- DOCK -->
-<div class="dock">
-<i class="fab fa-instagram"></i>
-<i class="fab fa-linkedin"></i>
-<i class="fab fa-behance"></i>
-<i class="fas fa-envelope"></i>
-</div>
-
-<!-- SCRIPT -->
 <script>
-// FILTER
-const filters = document.querySelectorAll('.filter');
-const items = document.querySelectorAll('.masonry-item');
+/* ─── Scroll reveal ─── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-filters.forEach(btn=>{
-btn.onclick=()=>{
-filters.forEach(b=>b.classList.remove('bg-black','text-white'));
-btn.classList.add('bg-black','text-white');
-
-let f=btn.dataset.filter;
-
-items.forEach(item=>{
-item.style.display = (f==='all'||item.classList.contains(f))?'block':'none';
-});
+/* ─── Experience tabs ─── */
+function switchExp(tab, panelId) {
+  document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
 }
-});
 
-// SCROLL REVEAL
-const reveals = document.querySelectorAll('.reveal');
+/* ─── GitHub stats counters ─── */
+// Replace these with your real numbers
+/* ─── Configuration ─── */
+const GITHUB_USERNAME = 'piyush16326-sys'; // <--- CHANGE THIS TO YOUR ACTUAL USERNAME
 
-function revealOnScroll(){
-let h = window.innerHeight;
+/* ─── Global Scroll Reveal ─── */
 
-reveals.forEach(el=>{
-if(el.getBoundingClientRect().top < h-100){
-el.classList.add('active');
+{const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 }
-});
+/* ─── Experience tabs ─── */
+function switchExp(tab, panelId) {
+  document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
 }
-window.addEventListener('scroll',revealOnScroll);
-revealOnScroll();
 
+/* ─── GitHub Logic ─── */
+const USERNAME = 'piyush16326-sys';
+const tip = document.getElementById('tip');
 
-
-// BOOK SCROLL ROTATION
-const book = document.getElementById('book');
-window.addEventListener('scroll', () => {
-    if(book){
-        let s = window.scrollY;
-        book.style.transform = `rotateY(${20 - s*0.05}deg) rotateX(${10 - s*0.03}deg)`;
-    }
-});
-
-// PACKAGING ROTATION
-const box = document.getElementById('box');
-window.addEventListener('scroll', () => {
-    if(box){
-        let s = window.scrollY;
-        box.style.transform = `rotateY(${s*0.3}deg) rotateX(${s*0.1}deg)`;
-    }
-});
-
-// NAVBAR SCROLL EFFECT
-const navbar = document.getElementById('navbar');
-
-window.addEventListener('scroll', () => {
-if(window.scrollY > 50){
-    navbar.classList.add('nav-scrolled');
-} else {
-    navbar.classList.remove('nav-scrolled');
+function animCount(el, target) {
+  if (!el || isNaN(target)) return;
+  let v = 0, step = Math.max(Math.ceil(target / 50), 1);
+  const t = setInterval(() => {
+    v = Math.min(v + step, target);
+    el.textContent = v.toLocaleString();
+    if (v >= target) clearInterval(t);
+  }, 20);
 }
-});
 
-const sections = document.querySelectorAll("section, footer");
-const navLinks = document.querySelectorAll(".nav-link");
+function langColor(lang) {
+  const m = {JavaScript:'#f7df1e',TypeScript:'#3178c6',Python:'#4ade80',CSS:'#38bdf8',HTML:'#e34c26',PHP:'#777bb4',Java:'#b07219','C#':'#178600',Go:'#00ADD8',Dart:'#00B4AB'};
+  return m[lang] || '#888';
+}
 
-window.addEventListener("scroll", () => {
-let current = "";
+function buildGrid(weeks) {
+  const grid = document.getElementById('grid');
+  const monthRow = document.getElementById('monthRow');
+  if (!grid || !monthRow) return;
+  grid.innerHTML = '';
+  monthRow.innerHTML = '';
 
-sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    if (scrollY >= sectionTop) {
-        current = section.getAttribute("id");
-    }
-});
+  const MN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const levelMap = {NONE:0,FIRST_QUARTILE:1,SECOND_QUARTILE:2,THIRD_QUARTILE:3,FOURTH_QUARTILE:4};
 
-navLinks.forEach(link => {
-    link.classList.remove("text-black", "font-semibold");
-    if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("text-black", "font-semibold");
-    }
-});
-});
+  let lastMonth = -1;
+  const monthPositions = [];
 
-document.addEventListener("DOMContentLoaded", () => {
+  weeks.forEach((week, wi) => {
+    const wEl = document.createElement('div');
+    wEl.className = 'week';
+    week.forEach(day => {
+      const dEl = document.createElement('div');
+      dEl.className = 'day';
+      const lv = levelMap[day.contributionLevel] || 0;
+      if (lv > 0) dEl.dataset.l = lv;
+      dEl.addEventListener('mouseenter', e => {
+        tip.textContent = `${day.contributionCount} contribution${day.contributionCount !== 1 ? 's' : ''} on ${day.date}`;
+        tip.classList.add('show');
+      });
+      dEl.addEventListener('mouseleave', () => tip.classList.remove('show'));
+      dEl.addEventListener('mousemove', e => {
+        tip.style.left = (e.clientX + 14) + 'px';
+        tip.style.top = (e.clientY - 32) + 'px';
+      });
+      wEl.appendChild(dEl);
 
-  // MOBILE MENU TOGGLE
-  const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  if(menuBtn && mobileMenu){
-    menuBtn.onclick = () => {
-      mobileMenu.classList.toggle("hidden");
-    };
-  }
-
-  // CLOSE MENU ON CLICK
-  document.querySelectorAll(".mobile-link").forEach(link => {
-    link.onclick = () => mobileMenu.classList.add("hidden");
+      const d = new Date(day.date + 'T00:00:00');
+      const m = d.getMonth();
+      if (m !== lastMonth && d.getDate() <= 7) {
+        lastMonth = m;
+        monthPositions.push({ month: m, weekIndex: wi });
+      }
+    });
+    grid.appendChild(wEl);
   });
 
-  // AUTO HIDE NAVBAR
-  let lastScroll = 0;
-  const navbar = document.getElementById("navbar");
-
-  window.addEventListener("scroll", () => {
-    let currentScroll = window.pageYOffset;
-
-    if(currentScroll > lastScroll && currentScroll > 80){
-        navbar.classList.add("nav-hidden");
-    } else {
-        navbar.classList.remove("nav-hidden");
-    }
-
-    lastScroll = currentScroll;
+  monthPositions.forEach((mp, i) => {
+    const lbl = document.createElement('div');
+    lbl.className = 'm-lbl';
+    lbl.textContent = MN[mp.month];
+    lbl.style.marginLeft = i === 0 ? (mp.weekIndex * 14) + 'px' : 0;
+    monthRow.appendChild(lbl);
   });
+}
 
-  // SCROLL STYLE
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 50){
-        navbar.classList.add('nav-scrolled');
-    } else {
-        navbar.classList.remove('nav-scrolled');
-    }
-  });
+async function loadLanguages() {
+  const sec = document.getElementById('langSection');
 
-  // MAGNET EFFECT 🧲
-  const magnets = document.querySelectorAll(".magnet");
+  try {
+    const r = await fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100`);
+    const repos = await r.json();
 
-  magnets.forEach(el => {
-    el.addEventListener("mousemove", (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
+    const counts = {};
+    let total = 0;
 
-      el.style.transform = `translate(${x*0.2}px, ${y*0.2}px)`;
+    repos.forEach(repo => {
+      if (repo.language) {
+        counts[repo.language] = (counts[repo.language] || 0) + 1;
+        total++;
+      }
     });
 
-    el.addEventListener("mouseleave", () => {
-      el.style.transform = "translate(0,0)";
+    // 🔥 FIX: prevent empty crash
+    if (total === 0) {
+      sec.innerHTML = `
+        <div class="lang-title">Top languages</div>
+        <div style="font-size:12px;color:var(--muted)">
+          No language data available
+        </div>`;
+      return;
+    }
+
+    const sorted = Object.entries(counts)
+      .map(([n, c]) => ({
+        n,
+        pct: Math.round((c / total) * 100)
+      }))
+      .sort((a, b) => b.pct - a.pct)
+      .slice(0, 5);
+
+    sec.innerHTML = `
+      <div class="lang-title">Top languages</div>
+      ${sorted.map(l => `
+        <div class="lang-row">
+          <div class="lang-header">
+            <span>${l.n}</span>
+            <span class="lang-pct">${l.pct}%</span>
+          </div>
+
+          <div class="lang-track">
+            <div class="lang-fill"
+                 style="width:${l.pct}%;background:${langColor(l.n)}">
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    `;
+
+  } catch (e) {
+    sec.innerHTML = `
+      <div class="lang-title">Top languages</div>
+      <div style="font-size:12px;color:var(--muted)">
+        Failed to load language data
+      </div>`;
+  }
+} 
+
+async function init() {
+  try {
+    const [uRes, cRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${USERNAME}`),
+      fetch(`https://github-contributions-api.deno.dev/${USERNAME}.json`)
+    ]);
+
+    if (!uRes.ok || !cRes.ok) throw new Error('API error');
+
+    const user = await uRes.json();
+    const contrib = await cRes.json();
+
+    const weeks = contrib.contributions || [];
+    const allDays = weeks.flat();
+    const currentYear = new Date().getFullYear();
+
+    let totalYear = 0, longestStreak = 0, currentStreak = 0;
+    let streak = 0;
+
+    allDays.forEach(d => {
+      const yr = parseInt(d.date.split('-')[0]);
+      if (yr === currentYear) totalYear += d.contributionCount;
+      if (d.contributionCount > 0) {
+        streak++;
+        if (streak > longestStreak) longestStreak = streak;
+      } else {
+        streak = 0;
+      }
     });
-  });
 
-});
+    for (let i = allDays.length - 1; i >= 0; i--) {
+      if (allDays[i].contributionCount > 0) currentStreak++;
+      else break;
+    }
 
-window.addEventListener('scroll', () => {
-  if(window.scrollY > 50){
-      navbar.classList.add('nav-scrolled');
-  } else {
-      navbar.classList.remove('nav-scrolled');
+    document.getElementById('totalInline').textContent = totalYear.toLocaleString();
+    animCount(document.getElementById('statStreak'), currentStreak);
+    animCount(document.getElementById('statTotal'), totalYear);
+    animCount(document.getElementById('statLongest'), longestStreak);
+    animCount(document.getElementById('statRepos'), user.public_repos);
+
+    buildGrid(weeks);
+    await loadLanguages();
+
+  } catch(e) {
+    document.getElementById('ghStats').innerHTML = `<div class="err" style="grid-column:1/-1">Could not load GitHub data. API rate limit may apply.</div>`;
+    document.getElementById('grid').innerHTML = '';
   }
+}
 
-  let currentScroll = window.pageYOffset;
-  if(currentScroll > lastScroll && currentScroll > 80){
-      navbar.classList.add("nav-hidden");
-  } else {
-      navbar.classList.remove("nav-hidden");
+init();
+
+/* ─── Newsletter ─── */
+function subscribeNewsletter() {
+  const email = document.getElementById('nlEmail').value.trim();
+  const btn = document.querySelector('.newsletter-btn');
+  if (!email || !email.includes('@')) {
+    btn.textContent = 'Enter valid email!';
+    btn.style.background = '#f87171';
+    setTimeout(() => { btn.textContent = 'Subscribe →'; btn.style.background = ''; }, 2000);
+    return;
   }
-  lastScroll = currentScroll;
-});
+  btn.textContent = 'Subscribed! ✓';
+  btn.style.background = '#4ade80';
+  btn.style.color = '#0a0a08';
+  document.getElementById('nlEmail').value = '';
+  // 
+  // To actually save emails, use one of these free services on GitHub Pages:
+  // 1. Formspree:  POST to https://formspree.io/f/YOUR_ID  with { email }
+  // 2. ConvertKit: embed their form action URL
+  // 3. Mailchimp:  use their embedded form endpoint
+  
+}
+
+const badgeData = [
+  { 
+    rarity: 'legendary', 
+    url: 'https://assets.holopin.io/eyJidWNrZXQiOiJob2xvcGluLWFzc2V0cyIsImtleSI6ImFzc2V0cy9jbDd0ZDhncDUwMTMyMDlrMHd1OHFlNHg5IiwiZWRpdHMiOnsicm90YXRlIjpudWxsfX0=', 
+    name: 'Early Bird Pegasaurus', 
+    event: 'Holopin First Badge 2022' 
+  },
+  { 
+    rarity: 'epic', 
+    url: 'https://assets.holopin.io/eyJidWNrZXQiOiJob2xvcGluLWFzc2V0cyIsImtleSI6ImFzc2V0cy9jbDhkOHVrb3MwMDk0MDlqbnVuaGRhcDd3IiwiZWRpdHMiOnsicm90YXRlIjpudWxsfX0=', 
+    name: 'Hacktoberfest 2022', 
+    event: 'Hacktoberfest' 
+  },
+  { 
+    rarity: 'rare', 
+    url: 'https://assets.holopin.io/eyJidWNrZXQiOiJob2xvcGluLWFzc2V0cyIsImtleSI6ImFzc2V0cy9jbDlmczZqdWgxNjI1ODA5bWkyNXAyNjRtbiIsImVkaXRzIjp7InJvdGF0ZSI6bnVsbH19', 
+    name: 'Surfer Moby Dock', 
+    event: 'Docker' 
+  },
+  { 
+    rarity: 'legendary', 
+    url: 'https://assets.holopin.io/eyJidWNrZXQiOiJob2xvcGluLWFzc2V0cyIsImtleSI6ImFzc2V0cy9jbGFqeHF4eTUwNDMzMDhqc3k3bXp1NmlwIiwiZWRpdHMiOnsicm90YXRlIjpudWxsfX0=', 
+    name: 'Appwrite Hacktoberfest 2022', 
+    event: 'Appwrite' 
+  },
+  { 
+    rarity: 'legendary', 
+    url: 'https://assets.holopin.io/eyJidWNrZXQiOiJob2xvcGluLWFzc2V0cyIsImtleSI6ImFzc2V0cy9jbG16MW5neWQwMjM3bTN6am50c2V6Yng2IiwiZWRpdHMiOnsicm90YXRlIjpudWxsfX0=', 
+    name: 'ILLA Hacktoberfest 2023', 
+    event: 'Hacktoberfest' 
+  },
+  { 
+    rarity: 'epic', 
+    url: 'https://assets.holopin.io/eyJidWNrZXQiOiJob2xvcGluLWFzc2V0cyIsImtleSI6ImFzc2V0cy9jbG15cWdyMGUwMjI1enV6amdxZmYwbmhsIiwiZWRpdHMiOnsicm90YXRlIjpudWxsfX0=', 
+    name: 'Appwrite Hacktoberfest 2023', 
+    event: 'Appwrite' 
+  },
+  { 
+    rarity: 'rare', 
+    url: 'https://assets.holopin.io/eyJidWNrZXQiOiJob2xvcGluLWFzc2V0cyIsImtleSI6ImFzc2V0cy9jbG16YzVpdWYxMDA0ODBma3V6dTBxYnpxOCIsImVkaXRzIjp7InJvdGF0ZSI6bnVsbH19', 
+    name: 'DigitalOcean Smiley', 
+    event: 'DigitalOcean' 
+  },
+  { 
+    rarity: 'legendary', 
+    url: 'https://assets.holopin.io/hf2024levels/level0-sloth-code-0-0-0-0.webp', 
+    name: 'Hacktoberfest 2024', 
+    event: 'Hacktoberfest' 
+  },
+  { 
+    rarity: 'legendary', 
+    url: 'https://assets.holopin.io/hf2025levels/lvl4-human.webp', 
+    name: 'Hacktoberfest 2025', 
+    event: 'Hacktoberfest' 
+  },
+  { 
+    rarity: 'epic', 
+    url: 'https://assets.holopin.io/eyJidWNrZXQiOiJob2xvcGluLWFzc2V0cyIsImtleSI6ImFzc2V0cy9jbWY2NmlrajQwMDAwaWUwNG8xaGRsZGF1IiwiZWRpdHMiOnsicm90YXRlIjpudWxsfX0=', 
+    name: 'Hacktoberfest 2025: Tree Planted', 
+    event: 'Hacktoberfest' 
+  },
+  { 
+    rarity: 'rare', 
+    url: 'https://assets.holopin.io/eyJidWNrZXQiOiJob2xvcGluLWFzc2V0cyIsImtleSI6ImFzc2V0cy9jbWcyejhoMW4wMDAwanUwNGJxOHUzdWw2IiwiZWRpdHMiOnsicm90YXRlIjpudWxsfX0=', 
+    name: 'Holopin x Hacktoberfest: 1 Badge Club', 
+    event: 'Holopin' 
+  },
+  { 
+    rarity: 'legendary', 
+    url: 'https://assets.holopin.io/hf2025levels/lvl5-human.webp', 
+    name: 'Hacktoberfest 2025: Supercontributor', 
+    event: 'Hacktoberfest' 
+  },
+  { 
+    rarity: 'legendary', 
+    url: 'https://assets.holopin.io/eyJidWNrZXQiOiJob2xvcGluLWFzc2V0cyIsImtleSI6ImFzc2V0cy9jbGJ2ZGRhZWE4MTk3MDhsaTdqZ2Y2cHRyIiwiZWRpdHMiOnsicm90YXRlIjpudWxsfX0=', 
+    name: 'Life of Pegasaurus', 
+    event: 'Holopin' 
+  }
+];
+
+function renderBadges() {
+  const container = document.getElementById('badgesContainer');
+  if (!container) return;
+
+  container.innerHTML = badgeData.map(badge => `
+    <div class="badge-card">
+      <div class="badge-shine"></div>
+      <span class="badge-rarity rarity-${badge.rarity}">${badge.rarity}</span>
+      <div class="badge-icon-wrap">
+        <img src="${badge.url}" alt="${badge.name}" class="badge-img" loading="lazy">
+      </div>
+      <span class="badge-name">${badge.name}</span>
+      <span class="badge-event">${badge.event}</span>
+    </div>
+  `).join('');
+}
+
+// Execute the render
+renderBadges();
 </script>
 
+
+
+<script>
+  // Custom Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  document.querySelectorAll('a, button, .project-card, .service-card, .skill-tag').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '20px';
+      cursor.style.height = '20px';
+      ring.style.width = '60px';
+      ring.style.height = '60px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '12px';
+      cursor.style.height = '12px';
+      ring.style.width = '40px';
+      ring.style.height = '40px';
+    });
+  });
+
+  // Scroll Reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .stat-item, .service-card, .project-card, .testimonial-card, .process-step').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Counter animation
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count);
+        const suffix = el.parentElement.querySelector('.stat-label').textContent.includes('%') ? '+' : '+';
+        let start = 0;
+        const duration = 1500;
+        const step = (target / duration) * 16;
+        const timer = setInterval(() => {
+          start += step;
+          if (start >= target) {
+            el.textContent = target + suffix;
+            clearInterval(timer);
+          } else {
+            el.textContent = Math.floor(start) + '+';
+          }
+        }, 16);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+  // Parallax text on scroll
+  const parallaxText = document.getElementById('parallaxText');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    if (parallaxText) {
+      parallaxText.style.transform = `translateX(${-scrolled * 0.15}px)`;
+    }
+  });
+
+  // Stagger service cards
+  document.querySelectorAll('.service-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.08) + 's';
+  });
+
+  // Process steps stagger
+  document.querySelectorAll('.process-step').forEach((step, i) => {
+    step.style.transitionDelay = (i * 0.1) + 's';
+  });
+</script>
 </body>
 </html>
