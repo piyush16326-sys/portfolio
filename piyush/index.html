@@ -1793,87 +1793,36 @@
         </a>
       </div>
     </div>
-  <form 
-  action="https://formspree.io/f/xdabovqa" 
-  method="POST" 
-  class="contact-form reveal"
-  id="contactForm"
-  novalidate
->
+    <form action="https://formspree.io/f/xdabovqa" method="POST" class="contact-form reveal">
   
-  <!-- Name -->
   <div class="form-group">
     <label class="form-label">Your Name</label>
-    <input 
-      type="text" 
-      name="name" 
-      class="form-input"
-      id="name"
-      placeholder="Jane Doe"
-      minlength="3"
-      maxlength="50"
-      pattern="^[A-Za-z\s]+$"
-      required
-    >
-    <small class="error-message"></small>
+    <input type="text" name="name" class="form-input" placeholder="Jane Doe" required>
   </div>
 
-  <!-- Email -->
   <div class="form-group">
     <label class="form-label">Email Address</label>
-    <input 
-      type="email" 
-      name="email" 
-      class="form-input"
-      id="email"
-      placeholder="jane@company.com"
-      required
-    >
-    <small class="error-message"></small>
+    <input type="email" name="email" class="form-input" placeholder="jane@company.com" required>
   </div>
 
-  <!-- Project Type -->
   <div class="form-group">
     <label class="form-label">Project Type</label>
-    <input 
-      type="text" 
-      name="project_type" 
-      class="form-input"
-      id="projectType"
-      placeholder="Web App / E-Commerce / Portfolio..."
-      minlength="3"
-      maxlength="60"
-    >
-    <small class="error-message"></small>
+    <input type="text" name="project_type" class="form-input" placeholder="Web App / E-Commerce / Portfolio...">
   </div>
 
-  <!-- Message -->
   <div class="form-group">
     <label class="form-label">Message</label>
-    <textarea 
-      name="message" 
-      class="form-textarea"
-      id="message"
-      rows="5"
-      placeholder="Tell me about your project, timeline, and budget..."
-      minlength="20"
-      maxlength="1000"
-      required
-    ></textarea>
-    <small class="error-message"></small>
+    <textarea name="message" class="form-textarea" rows="5" placeholder="Tell me about your project, timeline, and budget..." required></textarea>
   </div>
 
-  <button 
-    type="submit" 
-    class="btn-primary"
-    style="width: 100%; text-align: center; cursor: pointer; border: none;"
-  >
+  <button type="submit" class="btn-primary" style="width: 100%; text-align: center; cursor: pointer; border: none;">
     Send Message →
   </button>
 
 </form>
   </div>
 </section>
+
 
 <!-- FOOTER -->
 <footer>
@@ -1887,67 +1836,7 @@
   </div>
 </footer>
 
-  <script>
-  const form = document.getElementById("contactForm");
-
-  form.addEventListener("submit", function (e) {
-    let isValid = true;
-
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const projectType = document.getElementById("projectType");
-    const message = document.getElementById("message");
-
-    clearErrors();
-
-    // Name Validation
-    if (!/^[A-Za-z\s]{3,50}$/.test(name.value.trim())) {
-      showError(name, "Enter a valid name (only letters, min 3 chars)");
-      isValid = false;
-    }
-
-    // Email Validation
-    if (!/^\S+@\S+\.\S+$/.test(email.value.trim())) {
-      showError(email, "Enter a valid email address");
-      isValid = false;
-    }
-
-    // Project Type Validation (optional)
-    if (
-      projectType.value.trim() !== "" &&
-      projectType.value.trim().length < 3
-    ) {
-      showError(projectType, "Project type must be at least 3 characters");
-      isValid = false;
-    }
-
-    // Message Validation
-    if (message.value.trim().length < 20) {
-      showError(message, "Message must be at least 20 characters");
-      isValid = false;
-    }
-
-    if (!isValid) {
-      e.preventDefault();
-    }
-  });
-
-  function showError(input, message) {
-    input.classList.add("error");
-    input.nextElementSibling.textContent = message;
-  }
-
-  function clearErrors() {
-    document.querySelectorAll(".form-input, .form-textarea").forEach((field) => {
-      field.classList.remove("error");
-    });
-
-    document.querySelectorAll(".error-message").forEach((msg) => {
-      msg.textContent = "";
-    });
-  }
-</script>
-
+ 
 <script>
 /* ─── Scroll reveal ─── */
 const obs = new IntersectionObserver(entries => {
